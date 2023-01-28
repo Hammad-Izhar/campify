@@ -38,6 +38,9 @@ export const experiencesRouter = createTRPCRouter({
             wyg: true,
             wyn: true,
             host: true,
+            id: true,
+            hostId: true,
+            tags: true,
           },
         });
         return experiences;
