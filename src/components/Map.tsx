@@ -3,11 +3,15 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 
-const Map = () => {
+interface MapProps {
+  center: [number, number];
+}
+
+const Map = ({ center }: MapProps) => {
   return (
     <MapContainer
       className="h-screen w-screen"
-      center={[51.505, -0.09]}
+      center={center}
       zoom={13}
       scrollWheelZoom={false}
     >
@@ -15,7 +19,7 @@ const Map = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={[51.505, -0.09]}>
+      <Marker position={center}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>

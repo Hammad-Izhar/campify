@@ -8,7 +8,7 @@ const Map: NextPage = () => {
   return (
     <>
       <CampifyNavbar />
-      <MapWithNoSSR />
+      <MapWithNoSSR center={[43.5309812, -73.5544169]} />
     </>
   );
 };
