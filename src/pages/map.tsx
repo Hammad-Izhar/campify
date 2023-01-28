@@ -9,13 +9,14 @@ export interface ExperienceMarker {
   latitude: number;
   longitude: number;
   price: number;
+  tags: string[];
 }
 
 const Map: NextPage = () => {
   return (
-    <div className="min-w-screen w-screen h-screen min-h-screen">
+    <div className="min-w-screen h-screen min-h-screen w-screen">
       <CampifyNavbar />
-      <div className="grid grid-cols-2 gap-5 h-[calc(100vh-48px)]">
+      <div className="grid h-[calc(100vh-48px)] grid-cols-2 gap-5">
         <div className="">
           <ExperienceListing />
         </div>
