@@ -1,37 +1,56 @@
 import { prisma } from "../src/server/db";
 import { ObjectID } from "bson";
 
-var seed = 1;
-function random() {
-    var x = Math.sin(seed++) * 10000;
-    return x - Math.floor(x);
+async function clearDb() {
+  await prisma.host.deleteMany();
 }
 
-function makeid(length: number = 12) {
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < length) {
-    result += characters.charAt(Math.floor(random() * charactersLength));
-    counter += 1;
-  }
-  return result;
+async function makeRobExperiences(id: string) {
+  await prisma.experience.createMany({
+    data: [
+      {
+        hostId: id,
+        name: "Rush Pond Fishing Adventure",
+        cost: 109.99,
+        description: "Go fishing at rush pond!",
+        latitude: 43.3500298,
+        longitude: -73.7019347,
+      },
+      {
+        hostId: id,
+        name: "Hick on Buck Mountain",
+        cost: 109.99,
+        description: "Go fishing at rush pond!",
+        latitude: 43.3510298,
+        longitude: -73.7319347,
+      },
+      {
+        hostId: id,
+        name: "Something really far outside of the search zone",
+        cost: 109.99,
+        description: "Really should not be visible",
+        latitude: 143.3500298,
+        longitude: -83.7019347,
+      },
+    ],
+  });
 }
 
 async function main() {
-  const hostId_1 = new ObjectID().toString();
+  await clearDb();
+  const rob_host_id = new ObjectID().toString();
   await prisma.host.upsert({
     where: {
-      id: hostId_1.toString()
+      id: rob_host_id,
     },
     create: {
-      id: hostId_1.toString(),
+      id: rob_host_id,
       dob: new Date("12/09/2001"),
       name: "Robert Scheidegger",
     },
-    update: {}
+    update: {},
   });
+  await makeRobExperiences(rob_host_id);
 }
 
 main()

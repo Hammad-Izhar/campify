@@ -15,43 +15,44 @@ datasource db {
 }
 
 model Host {
-    id        String   @id @default(auto()) @map("_id") @db.ObjectId
-    name      String   
-    dob       DateTime 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    reviews   Review[]
+    id          String       @id @default(auto()) @map("_id") @db.ObjectId
+    name        String
+    dob         DateTime
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
+    reviews     Review[]
     experiences Experience[]
 }
 
 model Review {
-    id       String    @id @default(auto()) @map("_id") @db.ObjectId
-    hostId   String    @db.ObjectId
-    host     Host      @relation(fields: [hostId], references: [id], onDelete: Cascade)
-    stars    Float 
-    name     String
-    text     String
+    id     String @id @default(auto()) @map("_id") @db.ObjectId
+    hostId String @db.ObjectId
+    host   Host   @relation(fields: [hostId], references: [id], onDelete: Cascade)
+    stars  Float
+    name   String
+    text   String
 }
 
 model Experience {
-    id       String    @id @default(auto()) @map("_id") @db.ObjectId
-    hostId   String    @db.ObjectId
-    host     Host      @relation(fields: [hostId], references: [id], onDelete: Cascade)
-    name     String
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    hostId      String   @db.ObjectId
+    host        Host     @relation(fields: [hostId], references: [id], onDelete: Cascade)
+    name        String
     description String
-    images   Image[]
-    wyn      String[]
-    wyg      String[]
-    cost     Float
-    latitude Float
-    longitude Float
+    images      Image[]
+    wyn         String[]
+    wyg         String[]
+    cost        Float
+    latitude    Float
+    longitude   Float
+    tags        String[]
 }
 
 model Image {
-    id      String     @id @default(auto()) @map("_id") @db.ObjectId
-    content Bytes      
-    experienceId String @db.ObjectId
-    experience Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+    id           String     @id @default(auto()) @map("_id") @db.ObjectId
+    content      Bytes
+    experienceId String     @db.ObjectId
+    experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
 }
 
 // Necessary for Next auth
