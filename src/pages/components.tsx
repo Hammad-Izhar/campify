@@ -1,7 +1,8 @@
 import { type NextPage } from "next";
+import { Alert } from "flowbite-react";
 
 const Components: NextPage = () => {
-  return <h1>Yizhong Works Here</h1>;
+  return <Alert color="info">Alert!</Alert>;
 };
 
 export default Components;

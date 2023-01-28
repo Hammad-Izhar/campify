@@ -6,7 +6,9 @@ const Box = () => {
   const ref = useRef<Mesh>(null!);
 
   useFrame(({ clock }) => {
-    ref.current.position.z += clock.getDelta();
+    ref.current.rotation.x = clock.getElapsedTime();
+    ref.current.rotation.y = clock.getElapsedTime();
+    ref.current.rotation.z = clock.getElapsedTime();
   });
 
   return (
