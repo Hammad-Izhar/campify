@@ -2,7 +2,7 @@ import create from "zustand";
 import { api } from "../utils/api";
 
 export interface Bounds {
-  minLatitute: number;
+  minLatitude: number;
   minLongitude: number;
   maxLatitude: number;
   maxLongitude: number;
@@ -24,7 +24,7 @@ export const useMapState = create<MapState & MapActions>((set, get) => ({
   experiences: [],
   bounds: {
     maxLatitude: 0,
-    minLatitute: 0,
+    minLatitude: 0,
     maxLongitude: 0,
     minLongitude: 0,
   },

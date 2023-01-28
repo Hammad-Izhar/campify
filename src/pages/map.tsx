@@ -2,20 +2,23 @@ import { type NextPage } from "next";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import CampifyNavbar from "../components/CampifyNavbar";
+import { Bounds } from "../state/useMapState";
 import { api } from "../utils/api";
 
 const MapWithNoSSR = dynamic(() => import("../components/Map"), { ssr: false });
 
 const Map: NextPage = () => {
-  const [bounds, setBounds] = useState<[[number, number], [number, number]]>([
-    [43.768585, -72.865057],
-    [43.26229, -74.319066],
-  ]);
+  const [bounds, setBounds] = useState<Bounds>({
+    maxLatitude: 43.768585,
+    maxLongitude: -72.865057,
+    minLatitude: 43.26229,
+    minLongitude: -74.319066,
+  });
 
   const { data, isLoading } = api.experiences.getWithinArea.useQuery({
-    maxLatitute: 43.768585,
+    maxLatitude: 43.768585,
     maxLongitude: -72.865057,
-    minLatitute: 43.26229,
+    minLatitude: 43.26229,
     minLongitude: -74.319066,
   });
 

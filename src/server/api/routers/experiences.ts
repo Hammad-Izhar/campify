@@ -7,21 +7,21 @@ export const experiencesRouter = createTRPCRouter({
   getWithinArea: publicProcedure
     .input(
       z.object({
-        minLatitute: z.number(),
+        minLatitude: z.number(),
         minLongitude: z.number(),
-        maxLatitute: z.number(),
+        maxLatitude: z.number(),
         maxLongitude: z.number(),
       })
     )
     .query(
       async ({
-        input: { minLatitute, minLongitude, maxLatitute, maxLongitude },
+        input: { minLatitude, minLongitude, maxLatitude, maxLongitude },
       }) => {
         const experiences = await prisma.experience.findMany({
           where: {
             latitude: {
-              lt: maxLatitute,
-              gt: minLatitute,
+              lt: minLatitude,
+              gt: minLatitude,
             },
             longitude: {
               lt: maxLongitude,
