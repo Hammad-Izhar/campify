@@ -1,32 +1,53 @@
 import React, { useEffect } from "react";
-import { Marker } from "react-leaflet";
-import { ExperienceMarker } from "../pages/map";
+import { Marker } from "react-leaflet-marker";
+import { type ExperienceMarker } from "../pages/map";
 import { useMapState } from "../state/useMapState";
 import { api } from "../utils/api";
 
+const convertTagToEmoji = (tag: string) => {
+  switch (tag.toLowerCase()) {
+    case "hike":
+      return "⛰";
+    case "camp":
+      return "🏕";
+    case "kayak":
+      return "🚣‍♀️";
+    case "fish":
+      return "🐟";
+  }
+};
+
 export const Markers = () => {
-    const bounds = useMapState(state => state.bounds);
-    const setExperiences = useMapState(state => state.setExperiences);
-    const experiences = api.experiences.getWithinArea.useQuery(bounds);
-    
-    useEffect(() => {
-        // Update the experience state in the store to be used by the left screen.
-      if(experiences.isSuccess && experiences.data){
-        setExperiences(experiences.data);
-      }
-    }, [experiences.data]);
-    if(experiences.isLoading || !experiences.data) return <></>;
-  
-    const markers: ExperienceMarker[] = experiences.data.map((experience) => {
-      return {
-        latitude: experience.latitude,
-        longitude: experience.latitude,
-        price: experience.cost,
-      };
-    });
-    return <>
-        {markers.map((marker, idx) => (
-        <Marker key={idx} position={[marker.latitude, marker.longitude]} />
+  const bounds = useMapState((state) => state.bounds);
+  const setExperiences = useMapState((state) => state.setExperiences);
+  const { data, isSuccess, isLoading } =
+    api.experiences.getWithinArea.useQuery(bounds);
+
+  useEffect(() => {
+    // Update the experience state in the store to be used by the left screen.
+    if (isSuccess && data) {
+      setExperiences(data);
+    }
+  }, [data, isSuccess, setExperiences]);
+
+  if (isLoading || !data) return <div></div>;
+
+  const markers: ExperienceMarker[] = data.map((experience) => {
+    return {
+      latitude: experience.latitude,
+      longitude: experience.longitude,
+      price: experience.cost,
+      tags: experience.tags,
+    };
+  });
+
+  return (
+    <>
+      {markers.map((marker, idx) => (
+        <Marker key={idx} position={[marker.latitude, marker.longitude]}>
+          <div>{marker.tags.map(convertTagToEmoji).join(" ")}</div>
+        </Marker>
       ))}
     </>
+  );
 };
