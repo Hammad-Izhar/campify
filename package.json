@@ -29,6 +29,7 @@
     "leaflet": "^1.9.3",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "leaflet-geosearch": "^3.7.0",
+    "lodash": "^4.17.21",
     "next": "13.1.2",
     "next-auth": "^4.18.7",
     "react": "^18.2.0",
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.0",
+    "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.18",
     "@types/prettier": "^2.7.2",
     "@types/react": "^18.0.26",

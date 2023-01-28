@@ -1,19 +1,20 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
-import { type Bounds } from "../state/useMapState";
+import { useMapState, type Bounds } from "../state/useMapState";
 import { type ExperienceMarker } from "../pages/map";
+import { api } from "../utils/api";
+import { useEffect } from "react";
+import { BoundsUpdater } from "./BoundsUpdater";
+import { Markers } from "./Markers";
 
 interface MapProps {
-  bounds: Bounds;
-  markers: ExperienceMarker[];
   className?: string;
 }
 
-const Map = ({ bounds, markers, className }: MapProps) => {
-  console.log(markers);
-
+const Map = ({ className }: MapProps) => {
+  const bounds = useMapState(state => state.bounds);
   return (
     <MapContainer
       className={className}
@@ -22,16 +23,16 @@ const Map = ({ bounds, markers, className }: MapProps) => {
         [bounds.maxLatitude, bounds.maxLongitude],
       ]}
       zoom={13}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
       zoomAnimation={true}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        
       />
-      {markers.map((marker, idx) => (
-        <Marker key={idx} position={[marker.latitude, marker.longitude]} />
-      ))}
+      <Markers />
+      <BoundsUpdater />
     </MapContainer>
   );
 };

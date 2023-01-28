@@ -11,6 +11,7 @@ export interface Bounds {
 interface MapState {
   experiences: Experience[];
   bounds: Bounds;
+  selectedExperience?: Experience;
 }
 
 interface MapActions {
@@ -20,10 +21,10 @@ interface MapActions {
 export const useMapState = create<MapState & MapActions>((set, get) => ({
   experiences: [],
   bounds: {
-    maxLatitude: 0,
-    minLatitude: 0,
-    maxLongitude: 0,
-    minLongitude: 0,
+    maxLatitude: 43.768585,
+    maxLongitude: -72.865057,
+    minLatitude: 43.26229,
+    minLongitude: -74.319066,
   },
   setBounds: (bounds) => set({ bounds }),
   setExperiences: (experiences) => set({ experiences }),
