@@ -1,16 +1,40 @@
 import { type NextPage } from "next";
 import dynamic from "next/dynamic";
+import { useState } from "react";
 import CampifyNavbar from "../components/CampifyNavbar";
+import { api } from "../utils/api";
 
 const MapWithNoSSR = dynamic(() => import("../components/Map"), { ssr: false });
 
 const Map: NextPage = () => {
+  const [bounds, setBounds] = useState<[[number, number], [number, number]]>([
+    [43.768585, -72.865057],
+    [43.26229, -74.319066],
+  ]);
+
+  const { data, isLoading } = api.experiences.getWithinArea.useQuery({
+    maxLatitute: 43.768585,
+    maxLongitude: -72.865057,
+    minLatitute: 43.26229,
+    minLongitude: -74.319066,
+  });
+
   return (
     <>
       <CampifyNavbar />
       <div className="grid grid-cols-2 gap-5">
-        <div className="bg-slate-500"></div>
-        <MapWithNoSSR className="h-screen" center={[43.5309812, -73.5544169]} />
+        <div className="bg-slate-500">
+          {isLoading ? (
+            "Loading..."
+          ) : (
+            <ul>
+              {data?.map((experience) => (
+                <li key={experience.name}>{experience.name}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <MapWithNoSSR className="h-screen" bounds={bounds} />
       </div>
     </>
   );

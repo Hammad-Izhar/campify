@@ -4,15 +4,15 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 
 interface MapProps {
-  center: [number, number];
+  bounds: [[number, number], [number, number]];
   className?: string;
 }
 
-const Map = ({ center, className }: MapProps) => {
+const Map = ({ bounds, className }: MapProps) => {
   return (
     <MapContainer
       className={className}
-      center={center}
+      bounds={bounds}
       zoom={13}
       scrollWheelZoom={false}
       zoomAnimation={true}
@@ -21,11 +21,6 @@ const Map = ({ center, className }: MapProps) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={center}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
     </MapContainer>
   );
 };

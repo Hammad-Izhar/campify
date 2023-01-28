@@ -1,7 +1,7 @@
 import create from "zustand";
 import { api } from "../utils/api";
 
-interface Bounds {
+export interface Bounds {
   minLatitute: number;
   minLongitude: number;
   maxLatitude: number;
