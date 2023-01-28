@@ -1,3 +1,14 @@
+# TODO
+- [ ] Add map sidebar
+- [ ] Add cards to the main page
+- [ ] Add search bar
+- [ ] Add blender to the front page
+- [ ] Add about page cards + bios
+- [ ] Add auth
+- [ ] Add user profiles
+- [ ] Add the ability for people to create new experiences
+
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
