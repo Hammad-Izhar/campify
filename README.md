@@ -1,3 +1,14 @@
+# TODO
+- [ ] Add map sidebar
+- [ ] Add cards to the main page
+- [ ] Add search bar
+- [ ] Add blender to the front page
+- [ ] Add about page cards + bios
+- [ ] Add auth
+- [ ] Add user profiles
+- [ ] Add the ability for people to create new experiences
+
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
@@ -26,3 +37,12 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+
+## Using the Database
+
+To re-seed the database (might need to install things if it yells at you):
+
+```
+tsx prisma/seed.ts
+```
+
