@@ -15,6 +15,7 @@ interface MapState {
 
 interface MapActions {
   setBounds: (bounds: Bounds) => void;
+  setExperiences: (experiences: Experience[]) => void;
 }
 
 const experienceFunction = api.experiences.getWithinArea.useQuery;
@@ -28,7 +29,6 @@ export const useMapState = create<MapState & MapActions>((set, get) => ({
     maxLongitude: 0,
     minLongitude: 0,
   },
-  setBounds: (bounds) => {
-    set({ bounds });
-  },
+  setBounds: (bounds) => set({ bounds }),
+  setExperiences: (experiences) => set({ experiences }),
 }));
