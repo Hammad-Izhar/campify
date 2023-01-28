@@ -20,7 +20,7 @@ export const experiencesRouter = createTRPCRouter({
         const experiences = await prisma.experience.findMany({
           where: {
             latitude: {
-              lt: minLatitude,
+              lt: maxLatitude,
               gt: minLatitude,
             },
             longitude: {
