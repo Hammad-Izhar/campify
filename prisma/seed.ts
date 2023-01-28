@@ -15,6 +15,7 @@ async function makeRobExperiences(id: string) {
         description: "Go fishing at rush pond!",
         latitude: 43.3500298,
         longitude: -73.7019347,
+        tags: ["Fishing", "Canoing", "Outdoors"],
       },
       {
         hostId: id,
@@ -23,6 +24,7 @@ async function makeRobExperiences(id: string) {
         description: "Go fishing at rush pond!",
         latitude: 43.3510298,
         longitude: -73.7319347,
+        tags: ["Hiking", "Outdoors"],
       },
       {
         hostId: id,
