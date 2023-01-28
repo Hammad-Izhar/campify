@@ -5,15 +5,17 @@ import "leaflet-defaulticon-compatibility";
 
 interface MapProps {
   center: [number, number];
+  className?: string;
 }
 
-const Map = ({ center }: MapProps) => {
+const Map = ({ center, className }: MapProps) => {
   return (
     <MapContainer
-      className="h-screen w-screen"
+      className={className}
       center={center}
       zoom={13}
       scrollWheelZoom={false}
+      zoomAnimation={true}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

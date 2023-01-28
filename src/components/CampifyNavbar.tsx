@@ -18,7 +18,7 @@ const CampifyNavbar = () => {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link href="/main">Home</Navbar.Link>
+        <Navbar.Link href="/">Home</Navbar.Link>
         <Navbar.Link href="/about">About</Navbar.Link>
         <Navbar.Link href="/map">Maps</Navbar.Link>
         <Navbar.Link href="/components">Components</Navbar.Link>
