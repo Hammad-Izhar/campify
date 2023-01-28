@@ -1,5 +1,5 @@
 import create from "zustand";
-import { api } from "../utils/api";
+import { type Experience } from "@prisma/client";
 
 export interface Bounds {
   minLatitude: number;
@@ -17,10 +17,6 @@ interface MapActions {
   setBounds: (bounds: Bounds) => void;
   setExperiences: (experiences: Experience[]) => void;
 }
-
-const experienceFunction = api.experiences.getWithinArea.useQuery;
-type Experience = ReturnType<typeof experienceFunction>["data"];
-
 export const useMapState = create<MapState & MapActions>((set, get) => ({
   experiences: [],
   bounds: {
