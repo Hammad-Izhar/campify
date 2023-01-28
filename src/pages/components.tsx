@@ -6,7 +6,7 @@ const Components: NextPage = () => {
   return <div className='flex flex-wrap'>
       <div className='w-1/3'>
           <Listing
-              name="Robert Scheideger"
+              name="Robert Scheidegger"
               rating={3.14}
               gender="Male"
               age={21}

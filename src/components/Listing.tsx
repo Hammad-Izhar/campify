@@ -16,17 +16,17 @@ const Listing = ({name, rating, gender, age, distance, interest, experience}: Li
         <div className='table-header-group'>
 
         <div className="table-row">
-            <div className="table-cell p-1 pr-10">
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> 
+            <div className="table-cell pr-10 pb-1">
+                <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white"> 
                     {name}
                 </h5>
             
             </div>
-            <div className="table-cell p-1">
+            <div className="table-cell">
                 <div>
                     <Rating>
                     <Rating.Star />
-                    <p className="ml-2 text-sm font-bold text-gray-900 dark:text-white">
+                    <p className="ml-2 text-sm text-right font-bold text-gray-900 dark:text-white">
                         {rating}
                     </p>
                     </Rating>
@@ -35,26 +35,26 @@ const Listing = ({name, rating, gender, age, distance, interest, experience}: Li
         </div>
 
         <div className="table-row">
-          <div className="table-cell p-1 pr-10">
-            <span className="font-normal text-gray-700 dark:text-gray-400"> {gender}, {age} years old </span>
+          <div className="table-cell pr-10">
+            <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {gender}, {age} years old </span>
           </div>
         </div>
 
         <div className="table-row">
-          <div className="table-cell p-1 pr-10">
-            <span className="font-normal text-gray-700 dark:text-gray-400"> {distance} miles away</span>
+          <div className="table-cell pr-10">
+            <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {distance} miles away</span>
           </div>
         </div>
         
         <div className="table-row">
-          <div className="table-cell p-1 pr-10">
-            <span className="font-normal text-gray-700 dark:text-gray-400"> {interest} </span>
+          <div className="table-cell pr-10">
+            <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {interest} </span>
           </div>
         </div>
 
         <div className="table-row">
-          <div className="table-cell p-1 pr-10">
-            <span className="font-normal text-gray-700 dark:text-gray-400"> {experience} </span>
+          <div className="table-cell pr-10">
+            <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {experience} </span>
           </div>
         </div>
         
