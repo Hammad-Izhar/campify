@@ -5,12 +5,16 @@ import Campfire from "../components/Campfire";
 import CameraControls from "../components/CameraControls";
 
 const Home: NextPage = () => {
+  if (typeof window === undefined) {
+    return <div></div>;
+  }
+
   return (
     <main className="h-screen w-screen">
       <CampifyNavbar />
       <Canvas className="fixed">
-        <CameraControls />
         <Campfire />
+        <CameraControls />
       </Canvas>
     </main>
   );
