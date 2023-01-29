@@ -48,7 +48,12 @@ export const Markers = () => {
   return (
     <>
       {markers.map((marker, idx) => (
-        <Marker key={idx} position={[marker.latitude, marker.longitude]}>
+        <Marker
+          key={idx}
+          position={[marker.latitude, marker.longitude]}
+          interactive={true}
+          placement={"top"}
+        >
           <div
             className="w-max rounded-lg bg-orange-200 p-1 text-center text-xl"
             onClick={() => setSelectedExperience(marker.experience)}
