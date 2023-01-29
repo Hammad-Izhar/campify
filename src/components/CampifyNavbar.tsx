@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const CampifyNavbar = () => {
   return (
-    <Navbar fluid={true} rounded={true}>
+    <Navbar fluid={true} rounded={true} className="z-10">
       <Navbar.Brand>
         <Image
           src="/campify.jpg"

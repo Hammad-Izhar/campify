@@ -1,18 +1,30 @@
 import { type NextPage } from "next";
 import dynamic from "next/dynamic";
 import CampifyNavbar from "../components/CampifyNavbar";
+import { ExperienceListing } from "../components/ExperienceListing";
 
 const MapWithNoSSR = dynamic(() => import("../components/Map"), { ssr: false });
 
+export interface ExperienceMarker {
+  latitude: number;
+  longitude: number;
+  price: number;
+  tags: string[];
+}
+
 const Map: NextPage = () => {
   return (
-    <>
+    <div className="min-w-screen h-screen min-h-screen w-screen">
       <CampifyNavbar />
-      <div className="grid grid-cols-2 gap-5">
-        <div className="bg-slate-500"></div>
-        <MapWithNoSSR className="h-screen" center={[43.5309812, -73.5544169]} />
+      <div className="grid h-[calc(100vh-48px)] grid-cols-2 gap-5">
+        <div className="">
+          <ExperienceListing />
+        </div>
+        <div>
+          <MapWithNoSSR className="h-full" />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

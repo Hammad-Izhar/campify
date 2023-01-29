@@ -1,31 +1,40 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
+import { useMapState } from "../state/useMapState";
+import { BoundsUpdater } from "./BoundsUpdater";
+import { Markers } from "./Markers";
+import { MarkerLayer } from "react-leaflet-marker";
 
 interface MapProps {
-  center: [number, number];
   className?: string;
 }
 
-const Map = ({ center, className }: MapProps) => {
+const Map = ({ className }: MapProps) => {
+  const bounds = useMapState((state) => state.bounds);
+
   return (
     <MapContainer
       className={className}
-      center={center}
+      bounds={[
+        [bounds.minLatitude, bounds.minLongitude],
+        [bounds.maxLatitude, bounds.maxLongitude],
+      ]}
+      minZoom={8}
       zoom={13}
-      scrollWheelZoom={false}
+      maxZoom={15}
+      scrollWheelZoom={true}
       zoomAnimation={true}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={center}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+      <MarkerLayer>
+        <Markers />
+      </MarkerLayer>
+      <BoundsUpdater />
     </MapContainer>
   );
 };
