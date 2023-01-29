@@ -55,7 +55,7 @@ async function main() {
     return {
       ...experience,
       hostId: hostIds[Math.floor(Math.random() * hostIds.length)] ?? "",
-      images: _.shuffle(images[experience.location]),
+      images: _.shuffle((images as any)[experience.location]),
     };
   });
 
