@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useMap } from "react-leaflet";
 import { Marker } from "react-leaflet-marker";
 import { type ExperienceMarker } from "../pages/map";
 import { DetailedExperience, useMapState } from "../state/useMapState";
@@ -44,6 +43,8 @@ export const Markers = () => {
   const setSelectedExperience = useMapState(
     (state) => state.setSelectedExperience
   );
+
+  console.log("tags", tags);
 
   useEffect(() => {
     // Update the experience state in the store to be used by the left screen.
