@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Marker } from "react-leaflet-marker";
 import { type ExperienceMarker } from "../pages/map";
-import { useMapState } from "../state/useMapState";
+import { DetailedExperience, useMapState } from "../state/useMapState";
 import { api } from "../utils/api";
 
 const convertTagToEmoji = (tag: string) => {
@@ -29,7 +29,7 @@ export const Markers = () => {
   useEffect(() => {
     // Update the experience state in the store to be used by the left screen.
     if (isSuccess && data) {
-      setExperiences(data);
+      setExperiences(data as DetailedExperience[]);
     }
   }, [data, isSuccess, setExperiences]);
 

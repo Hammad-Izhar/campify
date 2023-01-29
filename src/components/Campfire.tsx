@@ -1,8 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { Group, Mesh } from "three";
+import { Stars } from "@react-three/drei";
 
 const Campfire = () => {
   const gltf = useLoader(GLTFLoader, "/models/non_reflective.glb");
@@ -19,7 +18,20 @@ const Campfire = () => {
     mixer?.update(delta);
   });
 
-  return <primitive object={gltf.scene} scale={1} />;
+  return (
+    <>
+      <Stars
+        radius={100}
+        depth={50}
+        count={5000}
+        factor={4}
+        saturation={0}
+        fade
+        speed={1}
+      />{" "}
+      <primitive object={gltf.scene} scale={1} />
+    </>
+  );
 };
 
 export default Campfire;
