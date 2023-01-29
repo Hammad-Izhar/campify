@@ -17,18 +17,18 @@ export const ExperienceCard = ({
   return (
     <div className="p-3">
       <div
-        className="flex flex-col rounded-lg bg-slate-400 shadow-md dark:border-gray-700 dark:bg-gray-800"
+        className="flex flex-col rounded-lg bg-slate-400 bg-opacity-20 shadow-md backdrop-blur-xl"
         data-testid="flowbite-card"
         onClick={() => setSelectedExperience(experience)}
       >
         <img alt="" className="h-64 rounded-t-lg" src={image} />
         <div className="flex h-full flex-col justify-center gap-4 p-6">
-          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="text-2xl font-bold tracking-tight text-white">
             {experience.name}
           </h5>
           <div>
             <div className="flex flex-wrap gap-2">
-              <span className="mr-4">{experience.location}</span>
+              <span className="mr-4 text-white">{experience.location}</span>
               {experience.tags.map((tag, idx) => (
                 <Badge key={idx} color={"info"}>
                   {tag}
@@ -36,9 +36,7 @@ export const ExperienceCard = ({
               ))}
             </div>
           </div>
-          <p className="font-normal text-gray-700 dark:text-gray-400">
-            {experience.description}
-          </p>
+          <p className="font-normal text-white ">{experience.description}</p>
         </div>
       </div>
     </div>
