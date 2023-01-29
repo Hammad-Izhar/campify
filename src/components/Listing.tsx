@@ -35,32 +35,32 @@ const Listing = ({name, rating, gender, age, distance, interest, experience}: Li
         </div>
 
         <div className="table-row">
-          <div className="table-cell pr-10">
-            <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {gender}, {age} years old </span>
-          </div>
+            <div className="table-cell pr-10">
+                <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {gender}, {age} years old </span>
+            </div>
         </div>
 
         <div className="table-row">
-          <div className="table-cell pr-10">
-            <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {distance} miles away</span>
-          </div>
+            <div className="table-cell pr-10">
+                <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {distance} miles away</span>
+            </div>
         </div>
         
         <div className="table-row">
-          <div className="table-cell pr-10">
-            <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {interest} </span>
-          </div>
+            <div className="table-cell pr-10">
+                <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {interest} </span>
+            </div>
         </div>
 
         <div className="table-row">
-          <div className="table-cell pr-10">
-            <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {experience} </span>
-          </div>
+            <div className="table-cell pr-10">
+                <span className="font-normal text-sm text-gray-700 dark:text-gray-400"> {experience} </span>
+            </div>
         </div>
         
-      </div>
+        </div>
     </div>
-  </Card>
+    </Card>
 }
 
 export default Listing;
