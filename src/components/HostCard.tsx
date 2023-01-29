@@ -7,22 +7,18 @@ interface HostCardProps {
 
 const HostCard = ({ host }: HostCardProps) => {
   return (
-    <Card href="#">
+    <Card className="bg-black">
       <div className="table w-full">
         <div className="table-header-group">
           <div className="table-row">
             <div className="table-cell pr-10 pb-1">
-              <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {host.name}
-              </h5>
+              <h5 className="text-xl font-bold tracking-tight ">{host.name}</h5>
             </div>
             <div className="table-cell">
               <div>
                 <Rating>
                   <Rating.Star />
-                  <p className="ml-2 text-right text-sm font-bold text-gray-900 dark:text-white">
-                    3.5
-                  </p>
+                  <p className="ml-2 text-right text-sm font-bold ">3.5</p>
                 </Rating>
               </div>
             </div>
@@ -30,7 +26,7 @@ const HostCard = ({ host }: HostCardProps) => {
 
           <div className="table-row">
             <div className="table-cell pr-10">
-              <span className="text-sm font-normal text-gray-700 dark:text-gray-400">
+              <span className="text-sm font-normal">
                 {Math.round(
                   (Date.now() - host.dob.getMilliseconds()) /
                     (1000 * 60 * 60 * 24 * 365.25)
@@ -42,9 +38,7 @@ const HostCard = ({ host }: HostCardProps) => {
 
           <div className="table-row">
             <div className="table-cell pr-10">
-              <span className="text-sm font-normal text-gray-700 dark:text-gray-400">
-                {host.bio}
-              </span>
+              <span className="text-sm font-normal">{host.bio}</span>
             </div>
           </div>
         </div>

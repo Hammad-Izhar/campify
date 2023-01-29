@@ -13,20 +13,14 @@ export const ExperienceDetailPane = () => {
   return (
     <div
       className={clsx(
-        "absolute left-[-50vw] h-screen w-[50vw] bg-white p-2 pt-12 transition-[left]",
+        "absolute left-[-50vw] z-10 h-screen w-[50vw] bg-black p-2 pt-12 text-white transition-[left]",
         selectedExperience && "!left-0"
       )}
     >
-      <div
-        className="absolute top-4 right-4 flex cursor-pointer text-lg"
-        onClick={() => setSelectedExperience(undefined)}
-      >
-        X
-      </div>
       {selectedExperience && (
         <>
           {selectedExperience.images.length != 0 && (
-            <Carousel className="mb-3 h-[44%] overflow-hidden">
+            <Carousel className="-mt-10 mb-3 h-[44%] overflow-hidden">
               {selectedExperience.images.map((img, idx) => (
                 <img
                   key={idx}
@@ -38,15 +32,21 @@ export const ExperienceDetailPane = () => {
             </Carousel>
           )}
           <h2 className="my-4 text-4xl font-bold">{selectedExperience.name}</h2>
-          <div>
-            <span>{selectedExperience.location}</span>
-            <div className="m-2 flex flex-wrap gap-2">
-              {selectedExperience.tags.map((tag, idx) => (
-                <Badge key={idx} color={"info"}>
-                  {tag}
-                </Badge>
-              ))}
-            </div>
+          <div className="align-center relative flex">
+            <span className="ml-2">{selectedExperience.location}</span>
+            <span
+              className="absolute right-5 flex cursor-pointer justify-center"
+              onClick={() => setSelectedExperience(undefined)}
+            >
+              Explore More Options {">"}
+            </span>
+          </div>
+          <div className="m-2 flex flex-wrap gap-2">
+            {selectedExperience.tags.map((tag, idx) => (
+              <Badge key={idx} color={"info"}>
+                {tag}
+              </Badge>
+            ))}
           </div>
 
           <div className="m-2">{selectedExperience.description}</div>
