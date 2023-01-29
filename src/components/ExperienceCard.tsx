@@ -1,3 +1,4 @@
+import { Badge } from "flowbite-react";
 import React from "react";
 import { DetailedExperience, useMapState } from "../state/useMapState";
 
@@ -16,7 +17,7 @@ export const ExperienceCard = ({
   return (
     <div className="p-3">
       <div
-        className="flex flex-col rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800"
+        className="flex flex-col rounded-lg bg-slate-400 shadow-md dark:border-gray-700 dark:bg-gray-800"
         data-testid="flowbite-card"
         onClick={() => setSelectedExperience(experience)}
       >
@@ -25,9 +26,18 @@ export const ExperienceCard = ({
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {experience.name}
           </h5>
+          <div>
+            <div className="flex flex-wrap gap-2">
+              <span className="mr-4">{experience.location}</span>
+              {experience.tags.map((tag, idx) => (
+                <Badge key={idx} color={"info"}>
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </div>
           <p className="font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
+            {experience.description}
           </p>
         </div>
       </div>

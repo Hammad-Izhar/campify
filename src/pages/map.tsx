@@ -1,10 +1,9 @@
 import { type NextPage } from "next";
-import dynamic from "next/dynamic";
 import CampifyNavbar from "../components/CampifyNavbar";
 import { ExperienceListing } from "../components/ExperienceListing";
 import { type DetailedExperience } from "../state/useMapState";
-
-const MapWithNoSSR = dynamic(() => import("../components/Map"), { ssr: false });
+import dynamic from "next/dynamic";
+import SearchBar from "../components/SearchBar";
 
 export interface ExperienceMarker {
   latitude: number;
@@ -14,15 +13,18 @@ export interface ExperienceMarker {
   experience: DetailedExperience;
 }
 
-const Map: NextPage = () => {
+const MapWithNoSSR = dynamic(() => import("../components/Map"), { ssr: false });
+
+const MapPage: NextPage = () => {
   return (
-    <div className="min-w-screen h-screen min-h-screen w-screen">
+    <div className="min-w-screen h-screen min-h-screen w-screen bg-black">
       <CampifyNavbar />
-      <div className="grid h-[calc(100vh-48px)] grid-cols-2 gap-5">
-        <div className="">
+      <div className="grid h-full grid-cols-2 gap-5">
+        <div className="mt-16 h-[calc(100vh-64px)]">
+          <SearchBar />
           <ExperienceListing />
         </div>
-        <div>
+        <div className="mt-16 h-[calc(100vh-64px)]">
           <MapWithNoSSR className="h-full" />
         </div>
       </div>
@@ -30,4 +32,4 @@ const Map: NextPage = () => {
   );
 };
 
-export default Map;
+export default MapPage;

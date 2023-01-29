@@ -1,14 +1,14 @@
 import { type NextPage } from "next";
 import { Canvas } from "@react-three/fiber";
-import CampifyNavbar from "../components/CampifyNavbar";
 import Campfire from "../components/Campfire";
 import { OrbitControls } from "@react-three/drei";
+import CampifyNavbar from "../components/CampifyNavbar";
 
 const Home: NextPage = () => {
   return (
-    <main className="h-screen w-screen overflow-hidden ">
+    <main className="relative h-screen w-screen">
       <CampifyNavbar />
-      <Canvas className="fixed">
+      <Canvas className="absolute">
         <color attach={"background"} args={["black"]} />
         <Campfire />
         <pointLight position={[0, 0.8, 0]} color={"#FFA500"} intensity={0.5} />
