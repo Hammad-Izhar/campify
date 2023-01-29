@@ -1,0 +1,15 @@
+## The Story of Campify's Development
+We originally conceived Campify as a platform for individuals to rent out and/or sell camping equipment. We developed this idea after Ed talked about some of his camping experiences with the Boy Scouts that often involved specialized equipment such as backpacks specifically made for overnight backpacking or microspikes for winter hikes. However, this specialized equipment came at a (literal) price. A 4-person tent might cost around $50, but backpacking backpacks could easily be twice that at the minimum. That's a steep cost for gear you would only use once, making just preparing for interesting camping trips prohibitive. At this point, we had an idea of the problem we wanted to solve. Remedying accessibility problems caused by pricey gear.
+
+While this gear was (and still in) expensive, Ed's Boy Scout Troop made these outings happen by maintaining a collection of Troop gear which could be freely swapped between different scouts for different trips. (Fun fact: Ed was his Troop's quartermaster for multiple years!) This led us to our idea behind Campify as a platform to facilitate a similar gear exchange. Renting out gear to people would lower the barrier to entry associated with buying expensive equipment you'd use only once, maybe twice, in addition to connecting people with fellow adventurers in their communities.
+
+However, this initial idea also ran into problems. As we soon realized, equipment wasn't the only barrier to camping. Many of the trips that required this specialized equipment, such as backpacking or winter hikes, required experience as well. Google tutorials can only go so far, and in most cases, are often insufficient to guarantee safety. Drawing parallel's to Ed's time in the Boy Scouts, he often learned important skills from the older scouts, who learned the same knowledge from the older scouts before them.
+
+We had to transition. Then, Rob came up with an excellent idea. Campify wasn't just for renting gear. Campify could sell the entire outdoor experience, coupling gear with the knowledge of how to use it safely. This led us to the Campify you see today. A platform that allows anyone to go on a variety of local outdoor trips--no gear or experience required! We hope Campify can connect local communities and make adventuring outside more accessible to everyone.
+
+## What Campify Does
+As a client, Campify lets you search for curated outdoor adventures led by local, experienced guides. You'll have the opportunity to specify location, times, and activities you'd like to search for, then Campify will return you a list of experiences that match your preferences. You can then browse these experiences to find one you're interested in or read more and connect about the people offering to take you on them.
+
+As a guide, Campify gives you the opportunity to share your passion for outdoor adventures with others, as well as get more usage out of camping gear you have lying around. Campify lets you do what you love. Plus, you get paid for it!
+
+## How Campify Works
