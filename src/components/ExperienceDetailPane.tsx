@@ -3,6 +3,7 @@ import { useMapState } from "../state/useMapState";
 import clsx from "clsx";
 import HostCard from "./HostCard";
 import { Badge, Carousel } from "flowbite-react";
+import Image from "next/image";
 
 export const ExperienceDetailPane = () => {
   const selectedExperience = useMapState((state) => state.selectedExperience);
@@ -28,7 +29,15 @@ export const ExperienceDetailPane = () => {
           {selectedExperience.images.length != 0 && (
             <Carousel>
               {selectedExperience.images.map((img, idx) => (
-                <img key={idx} src={img.content.toString()} alt="..." />
+                <Image
+                  width={375}
+                  height={256}
+                  key={idx}
+                  src={img.content.toString()}
+                  alt="Experience Image"
+                  className="object-contain"
+                  fill={true}
+                />
               ))}
             </Carousel>
           )}

@@ -21,11 +21,12 @@ const Map = ({ className }: MapProps) => {
         [bounds.minLatitude, bounds.minLongitude],
         [bounds.maxLatitude, bounds.maxLongitude],
       ]}
-      minZoom={0}
+      minZoom={7}
       zoom={13}
       maxZoom={15}
       scrollWheelZoom={true}
       zoomAnimation={true}
+      doubleClickZoom={false}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

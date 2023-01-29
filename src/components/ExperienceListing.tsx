@@ -5,12 +5,11 @@ import { ExperienceDetailPane } from "./ExperienceDetailPane";
 
 export const ExperienceListing = () => {
   const experiences = useMapState((state) => state.experiences);
-  const selectedExperience = useMapState((state) => state.selectedExperience);
 
   return (
     <div className="h-full p-2">
       <ExperienceDetailPane />
-      <div className="flex h-full flex-row flex-wrap border-2 border-gray-600">
+      <div className="grid max-h-screen grid-cols-2 overflow-auto border-2 border-gray-600">
         {experiences.map((experience) => (
           <ExperienceCard experience={experience} key={experience.id} />
         ))}
