@@ -8,26 +8,6 @@ const CampifyNavbar = () => {
             Campify
           </span>
         </a>
-        <div className="hidden w-full md:block md:w-auto">
-          <ul className="mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
-            <li>
-              <a
-                className="duration-400 block border-b border-gray-100 py-2 pr-4 pl-3 text-lg text-white transition-[background] hover:bg-gray-50 hover:text-black"
-                href="/map"
-              >
-                Map
-              </a>
-            </li>
-            <li>
-              <a
-                className="duration-400 block border-b border-gray-100 py-2 pr-4 pl-3 text-lg text-white hover:bg-gray-50 hover:text-black"
-                href="/about"
-              >
-                About
-              </a>
-            </li>
-          </ul>
-        </div>
       </div>
     </nav>
   );
