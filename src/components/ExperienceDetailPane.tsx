@@ -3,7 +3,6 @@ import { useMapState } from "../state/useMapState";
 import clsx from "clsx";
 import HostCard from "./HostCard";
 import { Badge, Carousel } from "flowbite-react";
-import Image from "next/image";
 
 export const ExperienceDetailPane = () => {
   const selectedExperience = useMapState((state) => state.selectedExperience);
@@ -41,8 +40,10 @@ export const ExperienceDetailPane = () => {
           <h2>{selectedExperience.name}</h2>
           <h6>{selectedExperience.location}</h6>
           <div className="m-2 flex flex-wrap gap-2">
-            {selectedExperience.tags.map((tag) => (
-              <Badge color={"info"}>{tag}</Badge>
+            {selectedExperience.tags.map((tag, idx) => (
+              <Badge key={idx} color={"info"}>
+                {tag}
+              </Badge>
             ))}
           </div>
           <div className="m-2">{selectedExperience.description}</div>

@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { Group, Mesh } from "three";
 
 const Campfire = () => {
-  const gltf = useLoader(GLTFLoader, "/models/grass_test.glb");
+  const gltf = useLoader(GLTFLoader, "/models/non_reflective.glb");
   let mixer: THREE.AnimationMixer;
   if (gltf.animations.length) {
     mixer = new THREE.AnimationMixer(gltf.scene);
