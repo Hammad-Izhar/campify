@@ -41,7 +41,9 @@ export const experiencesRouter = createTRPCRouter({
             id: true,
             hostId: true,
             tags: true,
+            location: true,
           },
+          take: 20,
         });
         console.log("experiences", experiences);
         return experiences;

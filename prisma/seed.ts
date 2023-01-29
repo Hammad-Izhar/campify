@@ -2,6 +2,7 @@ import { prisma } from "../src/server/db";
 import { hostData } from "./chatgpt_host_data";
 import { experienceData } from "./chatgpt_experience_data";
 import images from "./imageData.json";
+import _ from "lodash";
 
 async function clearDb() {
   await prisma.host.deleteMany();
@@ -54,11 +55,11 @@ async function main() {
     return {
       ...experience,
       hostId: hostIds[Math.floor(Math.random() * hostIds.length)] ?? "",
-      images: images[experience.location],
+      images: _.shuffle(images[experience.location]),
     };
   });
 
-  await prisma.experience.createMany({ data: experiencesWithIds });
+  await prisma.experience.createMany({ data: _.shuffle(experiencesWithIds) });
 }
 
 main()
