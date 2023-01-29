@@ -8,6 +8,12 @@ on:
     branches:
       - deploy
   workflow_dispatch:
+env:
+  DATABASE_URL: ${{ vars.DATABASE_URL }}
+  DISCORD_CLIENT_ID: ${{ vars.DISCORD_CLIENT_ID }}
+  DISCORD_CLIENT_SECRET: ${{ vars.DISCORD_CLIENT_SECRET }}
+  NEXTAUTH_SECRET: ${{ vars.NEXTAUTH_SECRET }}
+  NEXTAUTH_URL: ${{ vars.NEXTAUTH_URL }}
 
 jobs:
   build:
