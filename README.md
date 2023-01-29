@@ -1,48 +1,46 @@
-# TODO
-- [ ] Add map sidebar
-- [ ] Add cards to the main page
-- [ ] Add search bar
-- [ ] Add blender to the front page
-- [ ] Add about page cards + bios
-- [ ] Add auth
-- [ ] Add user profiles
-- [ ] Add the ability for people to create new experiences
+# Campify
 
+[Campify](https://www.rentacamp.site/) is website for people to find outdoors experiences. It is an opportunity for
+people who may not have enough experience to still have an enjoyable adventure with
+an outdoors expert.
 
-# Create T3 App
+![Main Page](main_page.png)
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a project built during the 2023 Hack@Brown Event. Our group members are:
+- Hammad Izhar, Project Manager
+- Robert Scheidegger, Database
+- Edward Bielawa, Animation
+- Yizhong (Richard) Hu, Component Design
 
-## What's next? How do I make an app with this?
+## Initiative
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+We realized that many people do want to enjoy camping experiences. However, what is 
+preventing them is not interest, but fear of the dangers involved and/or social anxiety
+associated with lack of experience. We aim to address this problem by setting up a website
+that links the experienced outdoor specialists with possibly inexperienced people. 
+We aim to craft a seamless experience such that people with no knowledge or gear can
+still enjoy the outdoors.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Features
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+We have the following features
+1. Experiences Listing. Includes details of location, and experience description
+2. Ability to search for experiences by Location, Start/End Date, Experience Type
+3. Map to show the location of the experiences, which can also be used for searching
+4. A beautiful low-poly interactive 3D animation on the main page of a campsite
 
-## Learn More
+## Campfire
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
-
-## Using the Database
-
-To re-seed the database (might need to install things if it yells at you):
-
-```
-tsx prisma/seed.ts
-```
+The theme of the 2023 Hack@Brown event is Campfire. We address the theme in at least
+two of the following ways:
+1. We provide opportunities for camping, along with other activities
+2. Our technology stack has the acronym CAMPFIRE:
+   1. Chat GPT, Data generation
+   2. Azure, Hosting
+   3. MongoDB, Database / Material UI, Frontend Components
+   4. Prisma, 
+   5. Flowbite, Front-end Components
+   6. Images from Bing
+   7. React,
+   8. Ed's Blender Models, Animation
 
