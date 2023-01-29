@@ -889,4 +889,104 @@ export const experienceData = [
     end_date: new Date("08/11/2022"),
     tags: ["hiking", "camping", "rock climbing"],
   },
+  {
+    name: "Adirondack Skiing Adventure",
+    cost: 89.99,
+    description:
+      "Hit the slopes on a downhill skiing adventure in the Adirondacks!",
+    location: "Whiteface Mountain, Wilmington, NY",
+    latitude: 44.357533,
+    longitude: -73.845651,
+    tags: ["skiing", "lessons", "riding"],
+  },
+  {
+    name: "Adirondack Fishing Frenzy",
+    cost: 39.99,
+    description:
+      "Cast your line and test your luck on a fishing adventure in the Adirondacks!",
+    location: "Lake George, NY",
+    latitude: 43.428972,
+    longitude: -73.679086,
+    tags: ["fishing", "camping", "swimming"],
+  },
+  {
+    name: "Adirondack Hiking Vacation",
+    cost: 59.99,
+    description:
+      "Explore the beauty of the Adirondacks on an exciting hiking adventure!",
+    location: "High Peaks Region, NY",
+    latitude: 44.119569,
+    longitude: -73.928982,
+    tags: ["hiking", "camping", "rock climbing"],
+  },
+  {
+    name: "Adirondack Kayaking Trip",
+    cost: 69.99,
+    description:
+      "Experience the beauty of the Adirondacks from the water on a kayaking adventure!",
+    location: "Long Lake, NY",
+    latitude: 44.191727,
+    longitude: -74.258821,
+    tags: ["kayaking", "camping", "fishing"],
+  },
+  {
+    name: "Adirondack Hunting Trip",
+    cost: 69.99,
+    description:
+      "Test your skills on an exciting hunting adventure in the Adirondacks!",
+    location: "Adirondack Park, NY",
+    latitude: 44.099446,
+    longitude: -74.258747,
+    tags: ["hunting", "camping", "hiking"],
+  },
+  {
+    name: "Adirondack Snowboarding Adventure",
+    cost: 89.99,
+    description:
+      "Hit the slopes on a snowboarding adventure in the Adirondacks!",
+    location: "Whiteface Mountain, Wilmington, NY",
+    latitude: 44.357533,
+    longitude: -73.845651,
+    tags: ["snowboarding", "lessons", "riding"],
+  },
+  {
+    name: "Adirondack Canoeing Trip",
+    cost: 59.99,
+    description:
+      "Experience the beauty of the Adirondacks from the water on a canoeing adventure!",
+    location: "Lake George, NY",
+    latitude: 43.428972,
+    longitude: -73.679086,
+    tags: ["canoeing", "camping", "swimming"],
+  },
+  {
+    name: "Adirondack Sailing Vacation",
+    cost: 79.99,
+    description:
+      "Explore the beauty of the Adirondacks on an exciting sailing adventure!",
+    location: "Long Lake, NY",
+    latitude: 44.191727,
+    longitude: -74.258821,
+    tags: ["sailing", "camping", "fishing"],
+  },
+  {
+    name: "Adirondack Rock Climbing Expedition",
+    cost: 79.99,
+    description:
+      "Test your skills on an exciting rock climbing expedition in the Adirondacks!",
+    location: "High Peaks Region, NY",
+    latitude: 44.119569,
+    longitude: -73.928982,
+    tags: ["rock climbing", "camping", "hiking"],
+  },
+  {
+    name: "Adirondack Swimming Excursion",
+    cost: 49.99,
+    description:
+      "Experience the beauty of the Adirondacks on an exciting swimming excursion!",
+    location: "Adirondack Park, NY",
+    latitude: 44.099446,
+    longitude: -74.258747,
+    tags: ["swimming", "camping", "fishing"],
+  },
 ];
