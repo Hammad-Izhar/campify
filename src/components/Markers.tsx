@@ -44,8 +44,6 @@ export const Markers = () => {
     (state) => state.setSelectedExperience
   );
 
-  console.log("tags", tags);
-
   useEffect(() => {
     // Update the experience state in the store to be used by the left screen.
     if (isSuccess && data) {
@@ -68,7 +66,6 @@ export const Markers = () => {
   return (
     <>
       {markers.map((marker, idx) => {
-        console.log(marker.tags);
         return (
           <Marker
             key={idx}

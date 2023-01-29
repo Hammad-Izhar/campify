@@ -9,11 +9,10 @@ export const ExperienceDetailPane = () => {
   const setSelectedExperience = useMapState(
     (state) => state.setSelectedExperience
   );
-  console.log(selectedExperience?.images);
   return (
     <div
       className={clsx(
-        "absolute left-[-50vw] z-10 h-screen w-[50vw] bg-black p-2 pt-12 text-white transition-[left]",
+        "absolute left-[-50vw] z-10 h-[calc(100vh-140px)] w-[50vw] bg-black p-2 pt-12 text-white transition-[left]",
         selectedExperience && "!left-0"
       )}
     >

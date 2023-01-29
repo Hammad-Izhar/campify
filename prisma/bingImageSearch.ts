@@ -15,7 +15,6 @@ export const getImagesFromQuery = async (
       "Ocp-Apim-Subscription-Key": process.env.BING_SEARCH_KEY,
     },
   });
-  console.log(response.data.value);
   return response.data.value
     .map((v: { contentUrl: string }) => v.contentUrl)
     .slice(0, count);

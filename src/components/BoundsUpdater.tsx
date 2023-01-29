@@ -6,11 +6,15 @@ import { useMapState } from "../state/useMapState";
 export const BoundsUpdater = () => {
   const setBounds = useMapState((state) => state.setBounds);
   const bounds = useMapState((state) => state.bounds);
+  const flying = useMapState((state) => state.flying);
+  const setFlying = useMapState((state) => state.setFlying);
 
   const map = useMap();
   useEffect(() => {
     const currentBounds = map.getBounds();
     if (Math.abs(currentBounds.getNorth() - bounds.maxLatitude) > 1) {
+      setFlying(true);
+      setTimeout(() => setFlying(false), 2000);
       map.flyToBounds([
         [bounds.minLatitude, bounds.minLongitude],
         [bounds.maxLatitude, bounds.maxLongitude],
@@ -20,15 +24,16 @@ export const BoundsUpdater = () => {
 
   useMapEvents({
     move: _.debounce((e) => {
-      console.log(e);
-      const bounds = map.getBounds();
-      setBounds({
-        maxLatitude: bounds.getNorth(),
-        minLatitude: bounds.getSouth(),
-        maxLongitude: bounds.getEast(),
-        minLongitude: bounds.getWest(),
-      });
-    }, 50),
+      if (!flying) {
+        const bounds = map.getBounds();
+        setBounds({
+          maxLatitude: bounds.getNorth(),
+          minLatitude: bounds.getSouth(),
+          maxLongitude: bounds.getEast(),
+          minLongitude: bounds.getWest(),
+        });
+      }
+    }, 100),
   });
   return <></>;
 };

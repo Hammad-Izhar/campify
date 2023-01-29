@@ -17,6 +17,7 @@ interface MapState {
   bounds: Bounds;
   selectedExperience?: DetailedExperience;
   tags: string[];
+  flying: boolean;
 }
 
 export const TAGS = [
@@ -72,12 +73,14 @@ interface MapActions {
     endDate?: Date,
     tags?: string[]
   ) => void;
+  setFlying: (flying: boolean) => void;
 }
 export const useMapState = create<MapState & MapActions>(
   //persist(
   (set, get) => ({
     experiences: [],
     tags: TAGS.map((t) => t.toLowerCase()),
+    flying: false,
     bounds: {
       maxLatitude: 43.88585,
       maxLongitude: -72.05057,
@@ -96,12 +99,12 @@ export const useMapState = create<MapState & MapActions>(
     },
     searchMap: (location, startDate, endDate, tags) => {
       set({ tags });
-      console.log("set location", location);
       if (LOCATION_BOUNDS[location ?? ""]) {
         // Update the bounds
         set({ bounds: LOCATION_BOUNDS[location ?? ""] });
       }
     },
+    setFlying: (flying) => set({ flying }),
   })
   //  {
   //    name: "mapStore",

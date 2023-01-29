@@ -28,7 +28,6 @@ export const experiencesRouter = createTRPCRouter({
           endDate,
         },
       }) => {
-        console.log("tags", tags);
         const experiences = await prisma.experience.findMany({
           where: {
             latitude: {
@@ -66,7 +65,6 @@ export const experiencesRouter = createTRPCRouter({
           },
           take: 20,
         });
-        console.log("experiences", experiences);
         return experiences;
       }
     ),

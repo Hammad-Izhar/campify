@@ -52,7 +52,6 @@ const SearchBar: NextPage = () => {
   };
 
   const submit = (e: any) => {
-    console.log("activities", activityName);
     searchMap(
       location,
       startDate === null ? undefined : startDate.toDate(),
@@ -65,10 +64,7 @@ const SearchBar: NextPage = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className="m-2 flex justify-center rounded-lg">
-        <FormControl
-          className="align-center mx-1 basis-1/6"
-          onChange={(e) => console.log("change", e)}
-        >
+        <FormControl className="align-center mx-1 basis-1/6">
           <Autocomplete
             disablePortal
             id="locationChoice"
@@ -79,7 +75,6 @@ const SearchBar: NextPage = () => {
                 sx={{ className: "text-white" }}
                 {...params}
                 label="Location"
-                onChange={(e) => console.log("inside change", e)}
               />
             )}
           />
