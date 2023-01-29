@@ -1,11 +1,19 @@
 import { Host } from "@prisma/client";
 import { Card, Rating } from "flowbite-react";
+import { useEffect, useState } from "react";
 
 interface HostCardProps {
   host: Host;
 }
 
 const HostCard = ({ host }: HostCardProps) => {
+  const [age, setAge] = useState(99);
+  const [rating, setRating] = useState(3.7);
+
+  useEffect(() => {
+    setAge(18 + Math.random() * 70);
+    setRating(5 * Math.random());
+  }, [host]);
   return (
     <Card className="bg-black">
       <div className="table w-full">
@@ -19,7 +27,7 @@ const HostCard = ({ host }: HostCardProps) => {
                 <Rating>
                   <Rating.Star />
                   <p className="ml-2 text-right text-sm font-bold ">
-                    {(Math.random() * 5).toFixed(2)}
+                    {rating.toFixed(2)}
                   </p>
                 </Rating>
               </div>
@@ -29,11 +37,7 @@ const HostCard = ({ host }: HostCardProps) => {
           <div className="table-row">
             <div className="table-cell pr-10">
               <span className="text-sm font-normal">
-                {Math.round(
-                  (Date.now() - host.dob.getMilliseconds()) /
-                    (1000 * 60 * 60 * 24 * 365.25)
-                )}{" "}
-                years old{" "}
+                {age.toFixed(0)} years old
               </span>
             </div>
           </div>

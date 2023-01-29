@@ -989,4 +989,112 @@ export const experienceData = [
     longitude: -74.258747,
     tags: ["swimming", "camping", "fishing"],
   },
+  {
+    name: "Kayaking on Lake Winnipesaukee",
+    cost: 45,
+    description:
+      "Explore the beautiful waters of New Hampshire with a two hour kayaking excursion",
+    location: "Lake Winnipesaukee",
+    latitude: 43.568003,
+    longitude: -71.227899,
+    tags: ["kayaking", "swimming"],
+  },
+
+  {
+    name: "Backwoods Hiking in the White Mountains",
+    cost: 0,
+    description:
+      "Embark on an adventure through the winding trails of the White Mountains",
+    location: "White Mountains",
+    latitude: 44.316044,
+    longitude: -71.50559,
+    tags: ["hiking"],
+  },
+
+  {
+    name: "Rock Climbing in Acadia National Park",
+    cost: 20,
+    description:
+      "Learn the basics of rock climbing with a certified instructor in Acadia National Park",
+    location: "Acadia National Park",
+    latitude: 44.33809,
+    longitude: -68.280739,
+    tags: ["rock climbing", "lessons"],
+  },
+
+  {
+    name: "Skiing at Killington Resort",
+    cost: 65,
+    description: "Hit the slopes with a full day pass to Killington Resort",
+    location: "Killington Resort",
+    latitude: 43.638398,
+    longitude: -72.7378,
+    tags: ["skiing"],
+  },
+
+  {
+    name: "Canoeing the Connecticut River",
+    cost: 25,
+    description:
+      "Take a leisurely paddle down the Connecticut River and take in the scenery",
+    location: "Connecticut River",
+    latitude: 42.861527,
+    longitude: -72.617887,
+    tags: ["canoeing"],
+  },
+
+  {
+    name: "Fishing on the Long Island Sound",
+    cost: 40,
+    description:
+      "Enjoy a day of fishing on the Long Island Sound with a local guide",
+    location: "Long Island Sound",
+    latitude: 41.001269,
+    longitude: -73.373793,
+    tags: ["fishing", "lessons"],
+  },
+
+  {
+    name: "Snowboarding at Mount Snow",
+    cost: 60,
+    description:
+      "Experience the thrill of snowboarding with a full day pass to Mount Snow",
+    location: "Mount Snow",
+    latitude: 42.981366,
+    longitude: -72.898396,
+    tags: ["snowboarding"],
+  },
+
+  {
+    name: "Horseback Riding in Vermont",
+    cost: 35,
+    description:
+      "Explore the scenic Vermont countryside on horseback with a two hour riding excursion",
+    location: "Vermont",
+    latitude: 44.07798,
+    longitude: -72.704593,
+    tags: ["riding", "lessons"],
+  },
+
+  {
+    name: "Sailing in Maine",
+    cost: 95,
+    description:
+      "Sail the waters of Maine with a certified captain and explore the coastline",
+    location: "Maine",
+    latitude: 45.244545,
+    longitude: -69.101719,
+    tags: ["sailing", "lessons"],
+  },
+
+  {
+    name: "Camping in the Berkshires",
+    cost: 25,
+    description:
+      "Spend the night in the beautiful Berkshires and enjoy the serenity of nature",
+    location: "Berkshires",
+    latitude: 42.265989,
+    longitude: -73.251113,
+    tags: ["camping"],
+  },
 ];
