@@ -38,6 +38,7 @@ model Experience {
     hostId      String   @db.ObjectId
     host        Host     @relation(fields: [hostId], references: [id], onDelete: Cascade)
     name        String
+    location    String
     description String
     images      Image[]
     wyn         String[]
