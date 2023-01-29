@@ -1,5 +1,5 @@
 import create from "zustand";
-import { type Experience } from "@prisma/client";
+import { Host, type Experience, Image } from "@prisma/client";
 
 export interface Bounds {
   minLatitude: number;
@@ -8,15 +8,21 @@ export interface Bounds {
   maxLongitude: number;
 }
 
+export type DetailedExperience = Experience & {
+  host: Host;
+  images: Image[];
+};
+
 interface MapState {
-  experiences: Experience[];
+  experiences: DetailedExperience[];
   bounds: Bounds;
-  selectedExperience?: Experience;
+  selectedExperience?: DetailedExperience;
 }
 
 interface MapActions {
   setBounds: (bounds: Bounds) => void;
-  setExperiences: (experiences: Experience[]) => void;
+  setExperiences: (experiences: DetailedExperience[]) => void;
+  setSelectedExperience: (experience?: DetailedExperience) => void;
 }
 export const useMapState = create<MapState & MapActions>((set, get) => ({
   experiences: [],
@@ -28,4 +34,12 @@ export const useMapState = create<MapState & MapActions>((set, get) => ({
   },
   setBounds: (bounds) => set({ bounds }),
   setExperiences: (experiences) => set({ experiences }),
+  setSelectedExperience: (experience) => {
+    const exp = get().selectedExperience;
+    if (exp && exp.id === experience?.id) {
+      set({ selectedExperience: undefined });
+    } else {
+      set({ selectedExperience: experience });
+    }
+  },
 }));

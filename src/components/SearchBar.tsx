@@ -5,6 +5,7 @@ import { ListGroup } from "flowbite-react";
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TextField } from "@mui/material";
+import Autocomplete from '@mui/material/Autocomplete';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -17,6 +18,12 @@ const SearchBar: NextPage = () => {
 
     // Keep track of the focus state in the Where
     const [whereFocused, setWhenFocued] = useState(true);
+
+    const locations = [
+        "Providence, RI",
+        "Yosemite National Park",
+        "Grand Canyon National Park"
+    ]
 
     // Keep track of the value in the date
     const [startDate, setStartDate] = useState<Dayjs | null>(null);
@@ -62,14 +69,15 @@ const SearchBar: NextPage = () => {
       
     return <form>   
         <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-        <div className="flex m-2 rounded-lg">
-            <div className="flex basis-[100%] bg-gray-300 rounded-lg border border-gray-400">
-                <div className="basis-1/3 px-4 py-2 border-r border-gray-400">
-                    <input type="search" className="block bg-gray-300 w-full align-center text-sm focus:outline-none" placeholder="Where?" 
-                        onFocus={() => { setWhenFocued((prevState) => {return false})}} 
-                        onBlur={() => {setWhenFocued((prevState) => {return true})}}
-                        required />
-                </div>
+        <div className="flex justify-center m-2 rounded-lg">
+                <FormControl className="basis-1/6 mx-1 align-center">
+                    <Autocomplete
+                        disablePortal
+                        id="locationChoice"
+                        options={locations}
+                        renderInput={(params) => <TextField {...params} label="Location" />}
+                    />
+                </FormControl>
                 
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
@@ -79,7 +87,7 @@ const SearchBar: NextPage = () => {
                             setStartDate(newValue);
                         }}
                         renderInput={(params) => <TextField {...params} />}
-                        className="text-sm"
+                        className="mx-1"
                     />
                     <DatePicker
                         label="End Date"
@@ -88,53 +96,34 @@ const SearchBar: NextPage = () => {
                             setEndDate(newValue);
                         }}
                         renderInput={(params) => <TextField {...params} />}
+                        className="mx-1"
                     />
                 </LocalizationProvider>
 
-                <div className="basis-1/4">
-                    <FormControl sx={{ width: 200 }}>
-                        <InputLabel id="activityChoice">Activity</InputLabel>
-                        <Select
-                            labelId="activityChoice"
-                            id="activityChoice"
-                            multiple
-                            value={activityName}
-                            onChange={handleChange}
-                            input={<OutlinedInput label="Activity" />}
-                            renderValue={(selected) => selected.join(', ')}
-                            MenuProps={MenuProps}
-                        >
-                        {activities.map((name) => (
-                            <MenuItem key={name} value={name}>
-                            <Checkbox checked={activityName.indexOf(name) > -1} />
-                            <ListItemText primary={name} />
-                            </MenuItem>
-                        ))}
-                        </Select>
-                    </FormControl>
-                </div>
-            </div>
+                <FormControl className="basis-1/6 mx-1">
+                    <InputLabel id="activityChoice">Activity</InputLabel>
+                    <Select
+                        labelId="activityChoice"
+                        id="activityChoice"
+                        multiple
+                        value={activityName}
+                        onChange={handleChange}
+                        input={<OutlinedInput label="Activity" />}
+                        renderValue={(selected) => selected.join(', ')}
+                        MenuProps={MenuProps}
+                    >
+                    {activities.map((name) => (
+                        <MenuItem key={name} value={name}>
+                        <Checkbox checked={activityName.indexOf(name) > -1} />
+                        <ListItemText primary={name} />
+                        </MenuItem>
+                    ))}
+                    </Select>
+                </FormControl>
 
-            <button type="submit" className="text-white bg-blue-800 ml-2 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-4 py-2">Search</button>
+            <button type="submit" className="text-white bg-blue-800 ml-1 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-4 py-2">Search</button>
         </div>
 
-
-        <div className={(whereFocused ? "hidden " : "") + "w-48"}>
-            <ListGroup>
-                <ListGroup.Item>
-                Profile
-                </ListGroup.Item>
-                <ListGroup.Item>
-                Settings
-                </ListGroup.Item>
-                <ListGroup.Item>
-                Messages
-                </ListGroup.Item>
-                <ListGroup.Item>
-                Download
-                </ListGroup.Item>
-            </ListGroup>
-        </div>
     </form>
 }
 

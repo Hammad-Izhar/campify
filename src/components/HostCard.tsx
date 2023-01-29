@@ -1,24 +1,11 @@
+import { Host } from "@prisma/client";
 import { Card, Rating } from "flowbite-react";
 
-interface ListingProps {
-  name: string;
-  rating: number;
-  gender: string;
-  age: number;
-  distance: number;
-  interest: string;
-  experience: string;
+interface HostCardProps {
+  host: Host;
 }
 
-const HostCard = ({
-  name,
-  rating,
-  gender,
-  age,
-  distance,
-  interest,
-  experience,
-}: ListingProps) => {
+const HostCard = ({ host }: HostCardProps) => {
   return (
     <Card href="#">
       <div className="table w-full">
@@ -26,7 +13,7 @@ const HostCard = ({
           <div className="table-row">
             <div className="table-cell pr-10 pb-1">
               <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {name}
+                {host.name}
               </h5>
             </div>
             <div className="table-cell">
@@ -34,7 +21,7 @@ const HostCard = ({
                 <Rating>
                   <Rating.Star />
                   <p className="ml-2 text-right text-sm font-bold text-gray-900 dark:text-white">
-                    {rating}
+                    3.5
                   </p>
                 </Rating>
               </div>
@@ -44,8 +31,11 @@ const HostCard = ({
           <div className="table-row">
             <div className="table-cell pr-10">
               <span className="text-sm font-normal text-gray-700 dark:text-gray-400">
-                {" "}
-                {gender}, {age} years old{" "}
+                {Math.round(
+                  (Date.now() - host.dob.getMilliseconds()) /
+                    (1000 * 60 * 60 * 24 * 365.25)
+                )}{" "}
+                years old{" "}
               </span>
             </div>
           </div>
@@ -53,26 +43,7 @@ const HostCard = ({
           <div className="table-row">
             <div className="table-cell pr-10">
               <span className="text-sm font-normal text-gray-700 dark:text-gray-400">
-                {" "}
-                {distance} miles away
-              </span>
-            </div>
-          </div>
-
-          <div className="table-row">
-            <div className="table-cell pr-10">
-              <span className="text-sm font-normal text-gray-700 dark:text-gray-400">
-                {" "}
-                {interest}{" "}
-              </span>
-            </div>
-          </div>
-
-          <div className="table-row">
-            <div className="table-cell pr-10">
-              <span className="text-sm font-normal text-gray-700 dark:text-gray-400">
-                {" "}
-                {experience}{" "}
+                {"BIO"}
               </span>
             </div>
           </div>
