@@ -1,6 +1,5 @@
 import create from "zustand";
-import { Host, type Experience, Image } from "@prisma/client";
-import { persist } from "zustand/middleware";
+import { Host, type Experience } from "@prisma/client";
 
 export interface Bounds {
   minLatitude: number;
