@@ -21,7 +21,9 @@ const Map = ({ className }: MapProps) => {
         [bounds.minLatitude, bounds.minLongitude],
         [bounds.maxLatitude, bounds.maxLongitude],
       ]}
+      minZoom={8}
       zoom={13}
+      maxZoom={15}
       scrollWheelZoom={true}
       zoomAnimation={true}
     >

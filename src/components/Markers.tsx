@@ -6,13 +6,13 @@ import { api } from "../utils/api";
 
 const convertTagToEmoji = (tag: string) => {
   switch (tag.toLowerCase()) {
-    case "hike":
+    case "hiking":
       return "⛰";
-    case "camp":
+    case "outdoors":
       return "🏕";
     case "kayak":
       return "🚣‍♀️";
-    case "fish":
+    case "fishing":
       return "🐟";
   }
 };
@@ -41,11 +41,15 @@ export const Markers = () => {
     };
   });
 
+  console.log(markers);
+
   return (
     <>
       {markers.map((marker, idx) => (
         <Marker key={idx} position={[marker.latitude, marker.longitude]}>
-          <div>{marker.tags.map(convertTagToEmoji).join(" ")}</div>
+          <div className="w-20 rounded-lg bg-orange-200 text-center text-xl">
+            {marker.tags.map(convertTagToEmoji).join(" ")}
+          </div>
         </Marker>
       ))}
     </>
