@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useMap } from "react-leaflet";
 import { Marker } from "react-leaflet-marker";
 import { type ExperienceMarker } from "../pages/map";
 import { DetailedExperience, useMapState } from "../state/useMapState";

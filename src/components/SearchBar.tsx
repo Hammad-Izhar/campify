@@ -65,17 +65,21 @@ const SearchBar: NextPage = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className="m-2 flex justify-center rounded-lg">
-        <FormControl className="align-center mx-1 basis-1/6">
+        <FormControl
+          className="align-center mx-1 basis-1/6"
+          onChange={(e) => console.log("change", e)}
+        >
           <Autocomplete
             disablePortal
             id="locationChoice"
             options={LOCATIONS}
+            onInputChange={(e) => setLocation((e.target as any).innerText)}
             renderInput={(params) => (
               <TextField
                 sx={{ className: "text-white" }}
                 {...params}
                 label="Location"
-                onChange={(e) => setLocation(e.target.value)}
+                onChange={(e) => console.log("inside change", e)}
               />
             )}
           />
