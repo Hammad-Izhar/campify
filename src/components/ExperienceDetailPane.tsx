@@ -36,7 +36,9 @@ export const ExperienceDetailPane = () => {
                   height={256}
                   key={idx}
                   src={img.content.toString()}
-                  alt="..."
+                  alt="Experience Image"
+                  className="object-contain"
+                  fill={true}
                 />
               ))}
             </Carousel>

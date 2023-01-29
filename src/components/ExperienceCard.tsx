@@ -16,7 +16,7 @@ export const ExperienceCard = ({
   );
   const image = experience.images[0]?.content.toString() ?? placeholderImage;
   return (
-    <div className="h-56 w-1/2 p-3">
+    <div className="p-3">
       <div
         className="flex flex-col rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800"
         data-testid="flowbite-card"
@@ -28,7 +28,7 @@ export const ExperienceCard = ({
           src={
             "https://wallup.net/wp-content/uploads/2018/03/19/575020-Adirondack_Mountains-New_York_state-river-mountains-trees-clouds-fall.jpg"
           }
-        ></img>
+        />
         <div className="flex h-full flex-col justify-center gap-4 p-6">
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {experience.name}
