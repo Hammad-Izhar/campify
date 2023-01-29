@@ -26,7 +26,7 @@ export const ExperienceDetailPane = () => {
       {selectedExperience && (
         <>
           {selectedExperience.images.length != 0 && (
-            <Carousel className="h-1/3 overflow-hidden">
+            <Carousel className="mb-3 h-[44%] overflow-hidden">
               {selectedExperience.images.map((img, idx) => (
                 <img
                   key={idx}
@@ -37,15 +37,18 @@ export const ExperienceDetailPane = () => {
               ))}
             </Carousel>
           )}
-          <h2>{selectedExperience.name}</h2>
-          <h6>{selectedExperience.location}</h6>
-          <div className="m-2 flex flex-wrap gap-2">
-            {selectedExperience.tags.map((tag, idx) => (
-              <Badge key={idx} color={"info"}>
-                {tag}
-              </Badge>
-            ))}
+          <h2 className="my-4 text-4xl font-bold">{selectedExperience.name}</h2>
+          <div>
+            <span>{selectedExperience.location}</span>
+            <div className="m-2 flex flex-wrap gap-2">
+              {selectedExperience.tags.map((tag, idx) => (
+                <Badge key={idx} color={"info"}>
+                  {tag}
+                </Badge>
+              ))}
+            </div>
           </div>
+
           <div className="m-2">{selectedExperience.description}</div>
           <HostCard host={selectedExperience.host} />
         </>
