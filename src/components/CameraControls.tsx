@@ -19,11 +19,14 @@ const CameraControls = () => {
     <orbitControls
       ref={controls}
       args={[camera, domElement]}
-      enableZoom={false}
-      maxAzimuthAngle={Math.PI / 4}
-      maxPolarAngle={Math.PI}
-      minAzimuthAngle={-Math.PI / 4}
+      enableZoom={true}
+      //maxAzimuthAngle={Math.PI / 4}
+      maxPolarAngle={Math.PI / 2 - Math.PI / 6}
+      //minAzimuthAngle={-Math.PI / 4}
       minPolarAngle={0}
+      enablePan={false}
+      minDistance={10}
+      maxDistance={20}
     />
   );
 };
