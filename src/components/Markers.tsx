@@ -47,7 +47,7 @@ export const Markers = () => {
     <>
       {markers.map((marker, idx) => (
         <Marker key={idx} position={[marker.latitude, marker.longitude]}>
-          <div className="w-20 rounded-lg bg-orange-200 text-center text-xl">
+          <div className="w-max rounded-lg bg-orange-200 p-1 text-center text-xl">
             {marker.tags.map(convertTagToEmoji).join(" ")}
           </div>
         </Marker>
