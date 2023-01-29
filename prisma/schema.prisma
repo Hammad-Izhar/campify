@@ -41,20 +41,13 @@ model Experience {
     name        String
     location    String
     description String
-    images      Image[]
+    images      String[]
     wyn         String[]
     wyg         String[]
     cost        Float
     latitude    Float
     longitude   Float
     tags        String[]
-}
-
-model Image {
-    id           String     @id @default(auto()) @map("_id") @db.ObjectId
-    content      Bytes
-    experienceId String     @db.ObjectId
-    experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
 }
 
 // Necessary for Next auth

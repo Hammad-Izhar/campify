@@ -10,7 +10,6 @@ export interface Bounds {
 
 export type DetailedExperience = Experience & {
   host: Host;
-  images: Image[];
 };
 
 interface MapState {

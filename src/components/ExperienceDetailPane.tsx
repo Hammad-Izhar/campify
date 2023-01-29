@@ -2,7 +2,7 @@ import React from "react";
 import { useMapState } from "../state/useMapState";
 import clsx from "clsx";
 import HostCard from "./HostCard";
-import { Carousel } from "flowbite-react";
+import { Badge, Carousel } from "flowbite-react";
 import Image from "next/image";
 
 export const ExperienceDetailPane = () => {
@@ -10,9 +10,7 @@ export const ExperienceDetailPane = () => {
   const setSelectedExperience = useMapState(
     (state) => state.setSelectedExperience
   );
-
-  if (selectedExperience) console.log("Has selected experience!");
-
+  console.log(selectedExperience?.images);
   return (
     <div
       className={clsx(
@@ -32,15 +30,23 @@ export const ExperienceDetailPane = () => {
             <Carousel>
               {selectedExperience.images.map((img, idx) => (
                 <Image
-                  width={375}
-                  height={256}
                   key={idx}
-                  src={img.content.toString()}
-                  alt="..."
+                  src={img}
+                  alt="Experience Image"
+                  className="object-contain"
+                  fill={true}
                 />
               ))}
             </Carousel>
           )}
+          <h2>{selectedExperience.name}</h2>
+          <h6>{selectedExperience.location}</h6>
+          <div className="m-2 flex flex-wrap gap-2">
+            {selectedExperience.tags.map((tag) => (
+              <Badge color={"info"}>{tag}</Badge>
+            ))}
+          </div>
+          <div className="m-2">{selectedExperience.description}</div>
           <HostCard host={selectedExperience.host} />
         </>
       )}
