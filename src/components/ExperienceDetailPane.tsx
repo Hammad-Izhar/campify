@@ -2,15 +2,13 @@ import React from "react";
 import { useMapState } from "../state/useMapState";
 import clsx from "clsx";
 import HostCard from "./HostCard";
-import { Carousel } from "flowbite-react";
+import { Badge, Carousel } from "flowbite-react";
 
 export const ExperienceDetailPane = () => {
   const selectedExperience = useMapState((state) => state.selectedExperience);
   const setSelectedExperience = useMapState(
     (state) => state.setSelectedExperience
   );
-
-  if (selectedExperience) console.log("Has selected experience!");
 
   return (
     <div
@@ -34,6 +32,14 @@ export const ExperienceDetailPane = () => {
               ))}
             </Carousel>
           )}
+          <h2>{selectedExperience.name}</h2>
+          <h6>{selectedExperience.location}</h6>
+          <div className="m-2 flex flex-wrap gap-2">
+            {selectedExperience.tags.map((tag) => (
+              <Badge color={"info"}>{tag}</Badge>
+            ))}
+          </div>
+          <div className="m-2">{selectedExperience.description}</div>
           <HostCard host={selectedExperience.host} />
         </>
       )}

@@ -43,7 +43,7 @@ const HostCard = ({ host }: HostCardProps) => {
           <div className="table-row">
             <div className="table-cell pr-10">
               <span className="text-sm font-normal text-gray-700 dark:text-gray-400">
-                {"BIO"}
+                {host.bio}
               </span>
             </div>
           </div>
