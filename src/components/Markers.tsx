@@ -76,7 +76,7 @@ export const Markers = () => {
             placement={"top"}
           >
             <div
-              className="w-max rounded-lg bg-orange-200 p-1 text-center text-xl"
+              className="w-max rounded-lg bg-slate-600 p-1 text-center text-xl"
               onClick={() => setSelectedExperience(marker.experience)}
             >
               {marker.tags.map(convertTagToEmoji).join(" ")}
