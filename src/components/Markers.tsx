@@ -10,7 +10,7 @@ const convertTagToEmoji = (tag: string) => {
       return "⛰";
     case "outdoors":
       return "🏕";
-    case "kayak":
+    case "canoing":
       return "🚣‍♀️";
     case "fishing":
       return "🐟";
