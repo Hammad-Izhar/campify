@@ -22,6 +22,7 @@ model Host {
     updatedAt   DateTime     @updatedAt
     reviews     Review[]
     experiences Experience[]
+    bio         String
 }
 
 model Review {
