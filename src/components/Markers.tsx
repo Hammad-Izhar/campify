@@ -6,28 +6,28 @@ import { DetailedExperience, useMapState } from "../state/useMapState";
 import { api } from "../utils/api";
 
 const convertTagToEmoji = (tag: string) => {
-  switch (tag) {
-    case "Camping":
+  switch (tag.toLowerCase()) {
+    case "camping":
       return "⛺";
-    case "Hiking":
+    case "hiking":
       return "⛰️";
-    case "Rocking Climbing":
+    case "rocking climbing":
       return "🪨";
-    case "Canoeing":
+    case "canoeing":
       return "🛶";
-    case "Kayaking":
+    case "kayaking":
       return "⛵";
-    case "Sailing":
+    case "sailing":
       return "🚢";
-    case "Skiing":
+    case "skiing":
       return "🎿";
-    case "Snowboarding":
+    case "snowboarding":
       return "🏂";
-    case "Swimming":
+    case "swimming":
       return "🏊‍♂️";
-    case "Scuba Diving":
+    case "scuba diving":
       return "🤽";
-    case "Other":
+    case "other":
       return "❓";
   }
 };
