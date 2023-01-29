@@ -27,14 +27,13 @@ export const ExperienceDetailPane = () => {
       {selectedExperience && (
         <>
           {selectedExperience.images.length != 0 && (
-            <Carousel>
+            <Carousel className="h-1/3 overflow-hidden">
               {selectedExperience.images.map((img, idx) => (
-                <Image
+                <img
                   key={idx}
                   src={img}
                   alt="Experience Image"
-                  className="object-contain"
-                  fill={true}
+                  className="object-fill"
                 />
               ))}
             </Carousel>
