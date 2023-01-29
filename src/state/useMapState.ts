@@ -82,9 +82,9 @@ export const useMapState = create<MapState & MapActions>(
     tags: TAGS.map((t) => t.toLowerCase()),
     flying: false,
     bounds: {
-      maxLatitude: 43.88585,
+      maxLatitude: 44.88585,
       maxLongitude: -72.05057,
-      minLatitude: 43.0229,
+      minLatitude: 42.0229,
       minLongitude: -75.319066,
     },
     setBounds: (bounds) => set({ bounds }),

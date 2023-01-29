@@ -17,7 +17,7 @@ export const ExperienceCard = ({
   return (
     <div className="p-3">
       <div
-        className="flex flex-col rounded-lg bg-slate-400 bg-opacity-20 shadow-md backdrop-blur-xl"
+        className="flex cursor-pointer flex-col rounded-lg bg-slate-400 bg-opacity-20 shadow-md backdrop-blur-xl"
         data-testid="flowbite-card"
         onClick={() => setSelectedExperience(experience)}
       >

@@ -20,7 +20,7 @@ const MapPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Campify|Search</title>
+        <title>Campify | Search</title>
       </Head>
       <div className="min-w-screen h-screen min-h-screen w-screen bg-black">
         <CampifyNavbar />
