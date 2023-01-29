@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import dynamic from "next/dynamic";
 import CampifyNavbar from "../components/CampifyNavbar";
 import { ExperienceListing } from "../components/ExperienceListing";
-import { DetailedExperience } from "../state/useMapState";
+import { type DetailedExperience } from "../state/useMapState";
 
 const MapWithNoSSR = dynamic(() => import("../components/Map"), { ssr: false });
 
