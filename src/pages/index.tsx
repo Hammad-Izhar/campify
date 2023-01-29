@@ -15,6 +15,7 @@ const Home: NextPage = () => {
       <Canvas className="fixed">
         <Campfire />
         <CameraControls />
+        <pointLight position={[0, 0.8, 0]} color={"#FFFFFF"} intensity={1.5} />
       </Canvas>
     </main>
   );
