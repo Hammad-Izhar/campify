@@ -6,15 +6,29 @@ import { DetailedExperience, useMapState } from "../state/useMapState";
 import { api } from "../utils/api";
 
 const convertTagToEmoji = (tag: string) => {
-  switch (tag.toLowerCase()) {
-    case "hiking":
-      return "⛰";
-    case "outdoors":
-      return "🏕";
-    case "canoing":
-      return "🚣‍♀️";
-    case "fishing":
-      return "🐟";
+  switch (tag) {
+    case "Camping":
+      return "⛺";
+    case "Hiking":
+      return "⛰️";
+    case "Rocking Climbing":
+      return "🪨";
+    case "Canoeing":
+      return "🛶";
+    case "Kayaking":
+      return "⛵";
+    case "Sailing":
+      return "🚢";
+    case "Skiing":
+      return "🎿";
+    case "Snowboarding":
+      return "🏂";
+    case "Swimming":
+      return "🏊‍♂️";
+    case "Scuba Diving":
+      return "🤽";
+    case "Other":
+      return "❓";
   }
 };
 
@@ -52,21 +66,24 @@ export const Markers = () => {
 
   return (
     <>
-      {markers.map((marker, idx) => (
-        <Marker
-          key={idx}
-          position={[marker.latitude, marker.longitude]}
-          interactive={true}
-          placement={"top"}
-        >
-          <div
-            className="w-max rounded-lg bg-orange-200 p-1 text-center text-xl"
-            onClick={() => setSelectedExperience(marker.experience)}
+      {markers.map((marker, idx) => {
+        console.log(marker.tags);
+        return (
+          <Marker
+            key={idx}
+            position={[marker.latitude, marker.longitude]}
+            interactive={true}
+            placement={"top"}
           >
-            {marker.tags.map(convertTagToEmoji).join(" ")}
-          </div>
-        </Marker>
-      ))}
+            <div
+              className="w-max rounded-lg bg-orange-200 p-1 text-center text-xl"
+              onClick={() => setSelectedExperience(marker.experience)}
+            >
+              {marker.tags.map(convertTagToEmoji).join(" ")}
+            </div>
+          </Marker>
+        );
+      })}
     </>
   );
 };
