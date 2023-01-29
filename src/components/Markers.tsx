@@ -22,6 +22,9 @@ export const Markers = () => {
   const setExperiences = useMapState((state) => state.setExperiences);
   const experiences = useMapState((state) => state.experiences);
   const { data, isSuccess } = api.experiences.getWithinArea.useQuery(bounds);
+  const setSelectedExperience = useMapState(
+    (state) => state.setSelectedExperience
+  );
 
   useEffect(() => {
     // Update the experience state in the store to be used by the left screen.
@@ -38,14 +41,23 @@ export const Markers = () => {
       longitude: experience.longitude,
       price: experience.cost,
       tags: experience.tags,
+      experience,
     };
   });
 
   return (
     <>
       {markers.map((marker, idx) => (
-        <Marker key={idx} position={[marker.latitude, marker.longitude]}>
-          <div className="w-max rounded-lg bg-orange-200 p-1 text-center text-xl">
+        <Marker
+          key={idx}
+          position={[marker.latitude, marker.longitude]}
+          interactive={true}
+          placement={"top"}
+        >
+          <div
+            className="w-max rounded-lg bg-orange-200 p-1 text-center text-xl"
+            onClick={() => setSelectedExperience(marker.experience)}
+          >
             {marker.tags.map(convertTagToEmoji).join(" ")}
           </div>
         </Marker>

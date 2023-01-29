@@ -1,6 +1,6 @@
 import { type Experience } from "@prisma/client";
 
-export const data: Partial<Experience>[] = [
+export const experienceData = [
   {
     name: "Wilderness Adventure",
     cost: 150,
