@@ -14,7 +14,7 @@ export const ExperienceCard = ({
   const setSelectedExperience = useMapState(
     (state) => state.setSelectedExperience
   );
-  const image = experience.images[0]?.content.toString() ?? placeholderImage;
+  const image = experience.images[0] ?? placeholderImage;
   return (
     <div className="p-3">
       <div
@@ -22,13 +22,7 @@ export const ExperienceCard = ({
         data-testid="flowbite-card"
         onClick={() => setSelectedExperience(experience)}
       >
-        <img
-          alt=""
-          className="h-64 rounded-t-lg"
-          src={
-            "https://wallup.net/wp-content/uploads/2018/03/19/575020-Adirondack_Mountains-New_York_state-river-mountains-trees-clouds-fall.jpg"
-          }
-        />
+        <img alt="" className="h-64 rounded-t-lg" src={image} />
         <div className="flex h-full flex-col justify-center gap-4 p-6">
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {experience.name}
