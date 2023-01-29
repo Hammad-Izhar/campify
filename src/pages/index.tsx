@@ -3,10 +3,11 @@ import { Canvas } from "@react-three/fiber";
 import Campfire from "../components/Campfire";
 import { OrbitControls } from "@react-three/drei";
 import CampifyNavbar from "../components/CampifyNavbar";
+import { Button } from "flowbite-react";
 
 const Home: NextPage = () => {
   return (
-    <main className="relative h-screen w-screen">
+    <main className="relative flex h-screen w-screen justify-center">
       <CampifyNavbar />
       <Canvas className="absolute">
         <color attach={"background"} args={["black"]} />
@@ -26,6 +27,14 @@ const Home: NextPage = () => {
           maxDistance={15}
         />
       </Canvas>
+      <Button
+        className="duration-400 absolute bottom-16 z-10 opacity-20 transition-[opacity] hover:opacity-100"
+        size="md"
+        gradientDuoTone="pinkToOrange"
+        href="map"
+      >
+        Start Your Camping Adventure Today!
+      </Button>
     </main>
   );
 };

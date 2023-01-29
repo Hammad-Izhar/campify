@@ -77,12 +77,12 @@ export const useMapState = create<MapState & MapActions>(
   //persist(
   (set, get) => ({
     experiences: [],
-    tags: TAGS,
+    tags: TAGS.map((t) => t.toLowerCase()),
     bounds: {
-      maxLatitude: 43.768585,
-      maxLongitude: -72.865057,
-      minLatitude: 43.26229,
-      minLongitude: -74.319066,
+      maxLatitude: 43.88585,
+      maxLongitude: -72.05057,
+      minLatitude: 43.0229,
+      minLongitude: -75.319066,
     },
     setBounds: (bounds) => set({ bounds }),
     setExperiences: (experiences) => set({ experiences }),

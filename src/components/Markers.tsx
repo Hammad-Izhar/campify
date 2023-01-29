@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useMap } from "react-leaflet";
 import { Marker } from "react-leaflet-marker";
 import { type ExperienceMarker } from "../pages/map";
 import { DetailedExperience, useMapState } from "../state/useMapState";
@@ -45,6 +44,8 @@ export const Markers = () => {
     (state) => state.setSelectedExperience
   );
 
+  console.log("tags", tags);
+
   useEffect(() => {
     // Update the experience state in the store to be used by the left screen.
     if (isSuccess && data) {
@@ -76,7 +77,7 @@ export const Markers = () => {
             placement={"top"}
           >
             <div
-              className="w-max rounded-lg bg-orange-200 p-1 text-center text-xl"
+              className="w-max rounded-lg bg-slate-600 p-1 text-center text-xl"
               onClick={() => setSelectedExperience(marker.experience)}
             >
               {marker.tags.map(convertTagToEmoji).join(" ")}

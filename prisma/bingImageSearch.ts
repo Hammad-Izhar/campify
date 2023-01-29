@@ -1,6 +1,6 @@
 import axios from "axios";
-const images = {};
-//import images from "./imageData.json";
+//const images = {};
+import images from "./imageData.json";
 import { experienceData } from "./chatgpt_experience_data";
 import * as fs from "fs";
 
