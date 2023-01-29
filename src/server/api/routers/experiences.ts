@@ -43,6 +43,7 @@ export const experiencesRouter = createTRPCRouter({
             tags: true,
           },
         });
+        console.log("experiences", experiences);
         return experiences;
       }
     ),

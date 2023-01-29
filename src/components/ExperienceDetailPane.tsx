@@ -10,7 +10,7 @@ export const ExperienceDetailPane = () => {
   const setSelectedExperience = useMapState(
     (state) => state.setSelectedExperience
   );
-
+  console.log(selectedExperience?.images);
   return (
     <div
       className={clsx(
@@ -30,10 +30,8 @@ export const ExperienceDetailPane = () => {
             <Carousel>
               {selectedExperience.images.map((img, idx) => (
                 <Image
-                  width={375}
-                  height={256}
                   key={idx}
-                  src={img.content.toString()}
+                  src={img}
                   alt="Experience Image"
                   className="object-contain"
                   fill={true}
