@@ -1,8 +1,12 @@
 import { prisma } from "../src/server/db";
-import { ObjectID } from "bson";
+import { hostData } from "./chatgpt_host_data";
+import { experienceData } from "./chatgpt_experience_data";
+import images from "./imageData.json";
+import _ from "lodash";
 
 async function clearDb() {
   await prisma.host.deleteMany();
+  await prisma.experience.deleteMany();
 }
 
 async function makeRobExperiences(id: string) {
@@ -11,6 +15,7 @@ async function makeRobExperiences(id: string) {
       {
         hostId: id,
         name: "Rush Pond Fishing Adventure",
+        location: "Queensbury",
         cost: 109.99,
         description: "Go fishing at rush pond!",
         latitude: 43.3500298,
@@ -20,6 +25,7 @@ async function makeRobExperiences(id: string) {
       {
         hostId: id,
         name: "Hick on Buck Mountain",
+        location: "Queensbury",
         cost: 109.99,
         description: "Go fishing at rush pond!",
         latitude: 43.3510298,
@@ -29,6 +35,7 @@ async function makeRobExperiences(id: string) {
       {
         hostId: id,
         name: "Something really far outside of the search zone",
+        location: "Queensbury",
         cost: 109.99,
         description: "Really should not be visible",
         latitude: 143.3500298,
@@ -40,19 +47,19 @@ async function makeRobExperiences(id: string) {
 
 async function main() {
   await clearDb();
-  const rob_host_id = new ObjectID().toString();
-  await prisma.host.upsert({
-    where: {
-      id: rob_host_id,
-    },
-    create: {
-      id: rob_host_id,
-      dob: new Date("12/09/2001"),
-      name: "Robert Scheidegger",
-    },
-    update: {},
+
+  await prisma.host.createMany({ data: hostData });
+
+  const hostIds = hostData.map((host) => host.id);
+  const experiencesWithIds = experienceData.map((experience) => {
+    return {
+      ...experience,
+      hostId: hostIds[Math.floor(Math.random() * hostIds.length)] ?? "",
+      images: _.shuffle(images[experience.location]),
+    };
   });
-  await makeRobExperiences(rob_host_id);
+
+  await prisma.experience.createMany({ data: _.shuffle(experiencesWithIds) });
 }
 
 main()

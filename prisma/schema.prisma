@@ -22,6 +22,7 @@ model Host {
     updatedAt   DateTime     @updatedAt
     reviews     Review[]
     experiences Experience[]
+    bio         String
 }
 
 model Review {
@@ -34,26 +35,21 @@ model Review {
 }
 
 model Experience {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    hostId      String   @db.ObjectId
-    host        Host     @relation(fields: [hostId], references: [id], onDelete: Cascade)
+    id          String    @id @default(auto()) @map("_id") @db.ObjectId
+    hostId      String    @db.ObjectId
+    host        Host      @relation(fields: [hostId], references: [id], onDelete: Cascade)
     name        String
     location    String
     description String
-    images      Image[]
+    images      String[]
     wyn         String[]
     wyg         String[]
     cost        Float
     latitude    Float
     longitude   Float
     tags        String[]
-}
-
-model Image {
-    id           String     @id @default(auto()) @map("_id") @db.ObjectId
-    content      Bytes
-    experienceId String     @db.ObjectId
-    experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+    start_date  DateTime?
+    end_date    DateTime?
 }
 
 // Necessary for Next auth
