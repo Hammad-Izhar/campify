@@ -23,7 +23,7 @@ const Home: NextPage = () => {
           intensity={0.05}
         />
         <OrbitControls
-          maxPolarAngle={Math.PI * (1 / 2 - 1 / 6)}
+          maxPolarAngle={Math.PI * (1 / 2 - 1 / 10)}
           minPolarAngle={0}
           enablePan={false}
           minDistance={10}
