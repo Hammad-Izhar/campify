@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { Stars } from "@react-three/drei";
 
 const Campfire = () => {
-  const gltf = useLoader(GLTFLoader, "/models/tree_test.glb");
+  const gltf = useLoader(GLTFLoader, "/models/full_test.glb");
   let mixer: THREE.AnimationMixer;
   if (gltf.animations.length) {
     mixer = new THREE.AnimationMixer(gltf.scene);
