@@ -16,12 +16,11 @@ export const getImagesFromQuery = async (
     },
   });
   console.log(response.data.value);
-  return (response.data.value.map((v) => v.contentUrl) as string[]).slice(
-    0,
-    count
-  );
+  return response.data.value
+    .map((v: { contentUrl: string }) => v.contentUrl)
+    .slice(0, count);
 };
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 // Generate images when it is run
 (async function () {
   const keys = Object.keys(images ?? { NONE: "" });
