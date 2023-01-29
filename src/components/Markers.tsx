@@ -21,7 +21,11 @@ export const Markers = () => {
   const bounds = useMapState((state) => state.bounds);
   const setExperiences = useMapState((state) => state.setExperiences);
   const experiences = useMapState((state) => state.experiences);
-  const { data, isSuccess } = api.experiences.getWithinArea.useQuery(bounds);
+  const tags = useMapState((state) => state.tags);
+  const { data, isSuccess } = api.experiences.getWithinArea.useQuery({
+    ...bounds,
+    tags,
+  });
   const setSelectedExperience = useMapState(
     (state) => state.setSelectedExperience
   );

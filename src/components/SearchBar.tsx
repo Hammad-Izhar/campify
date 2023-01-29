@@ -12,6 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { LOCATIONS, TAGS, useMapState } from "../state/useMapState";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,17 +21,10 @@ const darkTheme = createTheme({
 });
 
 const SearchBar: NextPage = () => {
-  // List of locations
-
-  const locations = [
-    "Providence, RI",
-    "Yosemite National Park",
-    "Grand Canyon National Park",
-  ];
-
   // Keep track of the value in the date
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
   const [endDate, setEndDate] = useState<Dayjs | null>(null);
+  const [location, setLocation] = useState<string>("");
 
   // Activities dropdown parameters
   const ITEM_HEIGHT = 48;
@@ -44,22 +38,9 @@ const SearchBar: NextPage = () => {
     },
   };
 
-  const activities = [
-    "Camping",
-    "Hiking",
-    "Rocking Climbing",
-    "Canoeing",
-    "Kayaking",
-    "Sailing",
-    "Skiing",
-    "Snowboarding",
-    "Swimming",
-    "Scuba Diving",
-    "Other",
-  ];
-
   // Keep Track of activities
-  const [activityName, setActivityName] = useState<string[]>([]);
+  const searchMap = useMapState((state) => state.searchMap);
+  const [activityName, setActivityName] = useState<string[]>(TAGS);
   const handleChange = (event: SelectChangeEvent<typeof activityName>) => {
     const {
       target: { value },
@@ -70,75 +51,86 @@ const SearchBar: NextPage = () => {
     );
   };
 
+  const submit = (e: any) => {
+    console.log("activities", activityName);
+    searchMap(
+      location,
+      startDate === null ? undefined : startDate.toDate(),
+      endDate === null ? undefined : endDate.toDate(),
+      activityName.map((s) => s.toLowerCase())
+    );
+    return false;
+  };
+
   return (
     <ThemeProvider theme={darkTheme}>
-      <form>
-        <div className="m-2 flex justify-center rounded-lg">
-          <FormControl className="align-center mx-1 basis-1/6">
-            <Autocomplete
-              disablePortal
-              id="locationChoice"
-              options={locations}
-              renderInput={(params) => (
-                <TextField
-                  sx={{ className: "text-white" }}
-                  {...params}
-                  label="Location"
-                />
-              )}
-            />
-          </FormControl>
+      <div className="m-2 flex justify-center rounded-lg">
+        <FormControl className="align-center mx-1 basis-1/6">
+          <Autocomplete
+            disablePortal
+            id="locationChoice"
+            options={LOCATIONS}
+            renderInput={(params) => (
+              <TextField
+                sx={{ className: "text-white" }}
+                {...params}
+                label="Location"
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            )}
+          />
+        </FormControl>
 
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              label="Start Date"
-              value={startDate}
-              onChange={(newValue) => {
-                setStartDate(newValue);
-              }}
-              renderInput={(params) => <TextField {...params} />}
-              className="mx-1"
-            />
-            <DatePicker
-              label="End Date"
-              value={endDate}
-              onChange={(newValue) => {
-                setEndDate(newValue);
-              }}
-              renderInput={(params) => <TextField {...params} />}
-              className="mx-1"
-            />
-          </LocalizationProvider>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            label="Start Date"
+            value={startDate}
+            onChange={(newValue) => {
+              setStartDate(newValue);
+            }}
+            renderInput={(params) => <TextField {...params} />}
+            className="mx-1"
+          />
+          <DatePicker
+            label="End Date"
+            value={endDate}
+            onChange={(newValue) => {
+              setEndDate(newValue);
+            }}
+            renderInput={(params) => <TextField {...params} />}
+            className="mx-1"
+          />
+        </LocalizationProvider>
 
-          <FormControl className="mx-1 basis-1/6">
-            <InputLabel id="activityChoice">Activity</InputLabel>
-            <Select
-              labelId="activityChoice"
-              id="activityChoice"
-              multiple
-              value={activityName}
-              onChange={handleChange}
-              input={<OutlinedInput label="Activity" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {activities.map((name) => (
-                <MenuItem key={name} value={name}>
-                  <Checkbox checked={activityName.indexOf(name) > -1} />
-                  <ListItemText primary={name} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <button
-            type="submit"
-            className="ml-1 rounded-lg bg-blue-800 px-4 py-2 text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
+        <FormControl className="mx-1 basis-1/6">
+          <InputLabel id="activityChoice">Activity</InputLabel>
+          <Select
+            labelId="activityChoice"
+            id="activityChoice"
+            multiple
+            value={activityName}
+            onChange={handleChange}
+            input={<OutlinedInput label="Activity" />}
+            renderValue={(selected) => selected.join(", ")}
+            MenuProps={MenuProps}
           >
-            Search
-          </button>
-        </div>
-      </form>
+            {TAGS.map((name) => (
+              <MenuItem key={name} value={name}>
+                <Checkbox checked={activityName.indexOf(name) > -1} />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        <button
+          type="button"
+          className="ml-1 rounded-lg bg-blue-800 px-4 py-2 text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
+          onClick={submit}
+        >
+          Search
+        </button>
+      </div>
     </ThemeProvider>
   );
 };

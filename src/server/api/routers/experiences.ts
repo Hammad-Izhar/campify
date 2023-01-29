@@ -11,12 +11,24 @@ export const experiencesRouter = createTRPCRouter({
         minLongitude: z.number(),
         maxLatitude: z.number(),
         maxLongitude: z.number(),
+        tags: z.string().array().optional(),
+        startDate: z.date().optional(),
+        endDate: z.date().optional(),
       })
     )
     .query(
       async ({
-        input: { minLatitude, minLongitude, maxLatitude, maxLongitude },
+        input: {
+          minLatitude,
+          minLongitude,
+          maxLatitude,
+          maxLongitude,
+          tags,
+          startDate,
+          endDate,
+        },
       }) => {
+        console.log("tags", tags);
         const experiences = await prisma.experience.findMany({
           where: {
             latitude: {
@@ -26,6 +38,15 @@ export const experiencesRouter = createTRPCRouter({
             longitude: {
               lt: maxLongitude,
               gt: minLongitude,
+            },
+            tags: tags && {
+              hasSome: tags,
+            },
+            start_date: startDate && {
+              gt: startDate,
+            },
+            end_date: endDate && {
+              lt: endDate,
             },
           },
           select: {
