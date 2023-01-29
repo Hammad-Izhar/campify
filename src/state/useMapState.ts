@@ -22,7 +22,7 @@ interface MapState {
 interface MapActions {
   setBounds: (bounds: Bounds) => void;
   setExperiences: (experiences: DetailedExperience[]) => void;
-  setSelectedExperience: (experience: DetailedExperience) => void;
+  setSelectedExperience: (experience?: DetailedExperience) => void;
 }
 export const useMapState = create<MapState & MapActions>((set, get) => ({
   experiences: [],
@@ -34,6 +34,12 @@ export const useMapState = create<MapState & MapActions>((set, get) => ({
   },
   setBounds: (bounds) => set({ bounds }),
   setExperiences: (experiences) => set({ experiences }),
-  setSelectedExperience: (experience) =>
-    set({ selectedExperience: experience }),
+  setSelectedExperience: (experience) => {
+    const exp = get().selectedExperience;
+    if (exp && exp.id === experience?.id) {
+      set({ selectedExperience: undefined });
+    } else {
+      set({ selectedExperience: experience });
+    }
+  },
 }));
