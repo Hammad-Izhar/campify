@@ -1,5 +1,6 @@
 import { prisma } from "../src/server/db";
 import { ObjectID } from "bson";
+import { getImagesFromQuery } from "./bingImageSearch";
 
 async function clearDb() {
   await prisma.host.deleteMany();
@@ -40,6 +41,8 @@ async function makeRobExperiences(id: string) {
 
 async function main() {
   await clearDb();
+  // TESTING
+  await getImagesFromQuery("Adirondack Mountains, New York");
   const rob_host_id = new ObjectID().toString();
   await prisma.host.upsert({
     where: {
