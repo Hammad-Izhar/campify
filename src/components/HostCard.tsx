@@ -19,7 +19,7 @@ const HostCard = ({ host }: HostCardProps) => {
                 <Rating>
                   <Rating.Star />
                   <p className="ml-2 text-right text-sm font-bold ">
-                    {(Math.random() * 5).toFixed(1)}
+                    {(Math.random() * 5).toFixed(2)}
                   </p>
                 </Rating>
               </div>
