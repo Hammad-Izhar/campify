@@ -20,8 +20,8 @@ const convertTagToEmoji = (tag: string) => {
 export const Markers = () => {
   const bounds = useMapState((state) => state.bounds);
   const setExperiences = useMapState((state) => state.setExperiences);
-  const { data, isSuccess, isLoading } =
-    api.experiences.getWithinArea.useQuery(bounds);
+  const experiences = useMapState((state) => state.experiences);
+  const { data, isSuccess } = api.experiences.getWithinArea.useQuery(bounds);
 
   useEffect(() => {
     // Update the experience state in the store to be used by the left screen.
@@ -30,9 +30,9 @@ export const Markers = () => {
     }
   }, [data, isSuccess, setExperiences]);
 
-  if (isLoading || !data) return <div></div>;
+  if (experiences.length == 0) return <div></div>;
 
-  const markers: ExperienceMarker[] = data.map((experience) => {
+  const markers: ExperienceMarker[] = experiences.map((experience) => {
     return {
       latitude: experience.latitude,
       longitude: experience.longitude,
@@ -40,8 +40,6 @@ export const Markers = () => {
       tags: experience.tags,
     };
   });
-
-  console.log(markers);
 
   return (
     <>
