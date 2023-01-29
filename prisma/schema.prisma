@@ -35,9 +35,9 @@ model Review {
 }
 
 model Experience {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    hostId      String   @db.ObjectId
-    host        Host     @relation(fields: [hostId], references: [id], onDelete: Cascade)
+    id          String    @id @default(auto()) @map("_id") @db.ObjectId
+    hostId      String    @db.ObjectId
+    host        Host      @relation(fields: [hostId], references: [id], onDelete: Cascade)
     name        String
     location    String
     description String
@@ -48,6 +48,8 @@ model Experience {
     latitude    Float
     longitude   Float
     tags        String[]
+    start_date  DateTime?
+    end_date    DateTime?
 }
 
 // Necessary for Next auth
