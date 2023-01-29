@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import { Dayjs } from 'dayjs';
 import { useState } from "react";
-import { ListGroup } from "flowbite-react";
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TextField } from "@mui/material";
@@ -16,8 +15,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 const SearchBar: NextPage = () => {
 
-    // Keep track of the focus state in the Where
-    const [whereFocused, setWhenFocued] = useState(true);
+    // List of locations
 
     const locations = [
         "Providence, RI",
