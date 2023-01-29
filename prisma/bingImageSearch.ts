@@ -1,5 +1,6 @@
 import axios from "axios";
-import images from "./imageData.json";
+const images = {};
+//import images from "./imageData.json";
 import { experienceData } from "./chatgpt_experience_data";
 import * as fs from "fs";
 
@@ -29,7 +30,16 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     if (!keys.includes(experience.location)) {
       // Generate some new image data for this location
       const imageUrls = await getImagesFromQuery(experience.location);
-      newKeys[experience.location] = imageUrls;
+      const filteredImages = await Promise.all(
+        imageUrls.map(async (url) => {
+          const response = await axios.get(url).catch(() => {});
+          return { url, valid: response?.status == 200 ?? false };
+        })
+      );
+
+      newKeys[experience.location] = filteredImages
+        .filter((v) => v.valid)
+        .map((v) => v.url);
     }
     await delay(400);
   }
